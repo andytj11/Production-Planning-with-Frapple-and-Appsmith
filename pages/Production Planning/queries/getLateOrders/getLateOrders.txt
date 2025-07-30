@@ -1,0 +1,4 @@
+SELECT COUNT(*) AS late_orders
+FROM public.operationplan
+WHERE enddate < CURRENT_DATE
+  AND status <> 'completed';
