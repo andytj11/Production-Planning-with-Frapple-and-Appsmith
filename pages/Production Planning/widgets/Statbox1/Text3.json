@@ -39,7 +39,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 37,
   "shouldTruncate": false,
-  "text": "{{ getLateOrders.data[0].late_orders }}\n\n",
+  "text": "{{ getLateOrders.data[0].late_orders }}\n",
   "textAlign": "LEFT",
   "textColor": "#ef4444",
   "topRow": 4,
