@@ -1,0 +1,7 @@
+SELECT
+    DATE_TRUNC('month', due)::date   AS month,
+    SUM(quantity)                    AS total_orders,
+    SUM(CASE WHEN status <> 'fulfilled' THEN quantity ELSE 0 END) AS open_orders
+FROM public.demand
+GROUP BY month
+ORDER BY month;

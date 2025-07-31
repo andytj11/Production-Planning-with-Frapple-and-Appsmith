@@ -1,13 +1,12 @@
+/* tasks that start in June-2019 */
 SELECT
-    opr.resource_id    AS resource,
-    ROUND(SUM(EXTRACT(EPOCH FROM op.enddate - op.startdate))/3600, 2) AS hrs
-FROM
-    public.operationplan op
-JOIN
-    public.operationplanresource opr
-      ON opr.operationplan_id = op.reference
-WHERE
-    op.startdate >= CURRENT_DATE
-  AND op.startdate <  CURRENT_DATE + INTERVAL '7 day'
-GROUP BY opr.resource_id
-ORDER BY hrs DESC;
+    r.name                      AS resource,          -- e.g. 'assembly line'
+    op.reference                AS reference,         -- order / operation ref
+    op.startdate::date          AS startdate,
+    op.enddate::date            AS enddate,
+    COALESCE(op.color, '#000')  AS barcolor           -- optional colour
+FROM   public.operationplan           op
+JOIN   public.resource                r  ON r.id = op.resource_id
+WHERE  op.startdate >= '2019-06-01'
+  AND  op.startdate <  '2019-07-01'
+ORDER  BY r.name, op.startdate;

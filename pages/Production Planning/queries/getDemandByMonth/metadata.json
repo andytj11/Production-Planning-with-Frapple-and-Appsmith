@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6886fa708a78c04a4132ad3c_43207f08-9fc5-4eb5-85b9-c77911eb4724",
-  "id": "Production Planning_Operation_Plan",
+  "gitSyncId": "6886fa708a78c04a4132ad3c_d98086a9-b8c7-4d51-b9bc-e5fd3b6ea9e8",
+  "id": "Production Planning_getDemandByMonth",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n  reference,\n  status,\n  type,\n  quantity,\n  startdate,\n  enddate,\n  name,\n  item_id,\n  location_id,\n  plan\nFROM public.operationplan\nWHERE status = 'proposed'\nORDER BY startdate\nLIMIT 50;\n",
+      "body": "SELECT\n    DATE_TRUNC('month', due)::date   AS month,\n    SUM(quantity)                    AS total_orders,\n    SUM(CASE WHEN status <> 'fulfilled' THEN quantity ELSE 0 END) AS open_orders\nFROM public.demand\nGROUP BY month\nORDER BY month;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -23,9 +23,9 @@
       "pluginId": "postgres-plugin"
     },
     "dynamicBindingPathList": [],
-    "name": "Operation_Plan",
+    "name": "getDemandByMonth",
     "pageId": "Production Planning",
     "runBehaviour": "ON_PAGE_LOAD",
-    "userSetOnLoad": false
+    "userSetOnLoad": true
   }
 }

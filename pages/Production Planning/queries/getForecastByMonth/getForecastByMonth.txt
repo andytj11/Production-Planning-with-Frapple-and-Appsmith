@@ -1,0 +1,6 @@
+SELECT
+    DATE_TRUNC('month', f.startdate)::date AS month,
+    SUM(f.orderstotal)                    AS forecast_total    
+FROM public.forecastplan f
+GROUP BY month
+ORDER BY month;

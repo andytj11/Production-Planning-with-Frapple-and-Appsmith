@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6886fa708a78c04a4132ad3c_04ff9cca-7107-4a86-8e23-acad658c4beb",
+  "gitSyncId": "6886fa708a78c04a4132ad3c_a226a0e6-d569-43b9-b1e9-656d2f032bee",
   "id": "Production Planning_Query1",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n    opr.resource_id    AS resource,\n    ROUND(SUM(EXTRACT(EPOCH FROM op.enddate - op.startdate))/3600, 2) AS hrs\nFROM\n    public.operationplan op\nJOIN\n    public.operationplanresource opr\n      ON opr.operationplan_id = op.reference\nWHERE\n    op.startdate >= CURRENT_DATE\n  AND op.startdate <  CURRENT_DATE + INTERVAL '7 day'\nGROUP BY opr.resource_id\nORDER BY hrs DESC;\n",
+      "body": "/* tasks that start in June-2019 */\nSELECT\n    r.name                      AS resource,          -- e.g. 'assembly line'\n    op.reference                AS reference,         -- order / operation ref\n    op.startdate::date          AS startdate,\n    op.enddate::date            AS enddate,\n    COALESCE(op.color, '#000')  AS barcolor           -- optional colour\nFROM   public.operationplan           op\nJOIN   public.resource                r  ON r.id = op.resource_id\nWHERE  op.startdate >= '2019-06-01'\n  AND  op.startdate <  '2019-07-01'\nORDER  BY r.name, op.startdate;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

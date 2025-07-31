@@ -1,0 +1,13 @@
+SELECT
+  reference AS id,
+  status,
+  type,
+  quantity AS qty,
+  startdate AS date,
+  name AS order,
+  item_id AS item,
+  location_id AS location
+FROM public.operationplan
+WHERE status = 'proposed'
+ORDER BY startdate
+LIMIT 50;

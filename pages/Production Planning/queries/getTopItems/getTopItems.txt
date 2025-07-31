@@ -1,0 +1,8 @@
+SELECT
+    d.item_id        AS item,           -- item_id IS ACTUALLY item.name
+    SUM(d.quantity)  AS qty
+FROM public.demand d
+WHERE d.status <> 'fulfilled'           -- adjust if you track status differently
+GROUP BY d.item_id
+ORDER BY qty DESC
+LIMIT 10;

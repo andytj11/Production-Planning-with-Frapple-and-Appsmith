@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 14,
+  "bottomRow": 10,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -14,7 +14,7 @@
   "dynamicTriggerPathList": [],
   "fontFamily": "Ubuntu",
   "fontSize": "0.875rem",
-  "fontStyle": "BOLD",
+  "fontStyle": "BOLD,ITALIC",
   "isLoading": false,
   "isVisible": true,
   "key": "z5ivsnxxtf",
@@ -27,21 +27,21 @@
   "mobileRightColumn": 37,
   "mobileTopRow": 8,
   "needsErrorInfo": false,
-  "originalBottomRow": 14,
-  "originalTopRow": 8,
+  "originalBottomRow": 10,
+  "originalTopRow": 4,
   "overflow": "NONE",
-  "parentId": "7suem06cep",
+  "parentId": "ffv9lr2dml",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 37,
+  "rightColumn": 36,
   "shouldTruncate": false,
   "text": "For orders where end date before today and status completed.",
   "textAlign": "LEFT",
   "textColor": "#3b82f6",
-  "topRow": 8,
+  "topRow": 4,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "rcreuj90fq",
-  "widgetName": "Text4"
+  "widgetId": "1547q4ejiw",
+  "widgetName": "late_Orders_DescriptionCopy1"
 }
