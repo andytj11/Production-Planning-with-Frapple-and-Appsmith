@@ -1,0 +1,14 @@
+SELECT
+    d.name            AS order_name,
+    i.name            AS item,
+    l.name            AS location,
+    COALESCE(c.name, '-') AS customer,
+    d.status,                     -- will be 'closed'
+    d.quantity,
+    d.due
+FROM public.demand        d
+JOIN public.item          i ON i.name      = d.item_id
+JOIN public.location      l ON l.name      = d.location_id
+LEFT JOIN public.customer c ON c.name      = d.customer_id
+WHERE d.status = 'closed'                 -- <<< only closed orders
+ORDER BY d.due;                           -- same sort as screenshot

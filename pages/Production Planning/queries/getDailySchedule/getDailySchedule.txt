@@ -1,0 +1,15 @@
+SELECT
+        op.reference                 AS order_ref,      -- eg SO-001
+        o.item_id                    AS model,          -- chair / table
+        op.quantity,
+        op.startdate,
+        op.enddate,
+        STRING_AGG(r.name, ', ' ORDER BY r.name) AS processes   -- Saw, Varnish …
+FROM    public.operationplan               op
+JOIN    public.operation                    o   ON o.name = op.operation_id
+JOIN    public.operationplanresource        opr ON CAST(opr.operationplan_id AS text)= op.reference
+JOIN    public.resource                     r   ON CAST(opr.resource_id      AS text)= r.name
+WHERE   op.startdate::date >= '2016-06-02'          -- start of horizon
+  AND   op.startdate::date <  '2019-07-05'     -- 7-day window
+GROUP BY op.reference, o.item_id, op.quantity, op.startdate, op.enddate
+ORDER  BY op.startdate;

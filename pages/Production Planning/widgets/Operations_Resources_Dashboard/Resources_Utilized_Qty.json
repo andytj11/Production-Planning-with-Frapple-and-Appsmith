@@ -1,47 +1,53 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 10,
+  "bottomRow": 14,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
     },
     {
+      "key": "fontFamily"
+    },
+    {
       "key": "borderRadius"
+    },
+    {
+      "key": "text"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
-  "fontFamily": "Ubuntu",
-  "fontSize": "0.875rem",
-  "fontStyle": "BOLD,ITALIC",
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "fontSize": "1.25rem",
+  "fontStyle": "BOLD",
   "isLoading": false,
   "isVisible": true,
   "key": "z5ivsnxxtf",
-  "leftColumn": 3,
+  "leftColumn": 33,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 12,
+  "mobileBottomRow": 8,
   "mobileLeftColumn": 1,
   "mobileRightColumn": 37,
-  "mobileTopRow": 8,
+  "mobileTopRow": 4,
   "needsErrorInfo": false,
-  "originalBottomRow": 10,
-  "originalTopRow": 4,
+  "originalBottomRow": 14,
+  "originalTopRow": 10,
   "overflow": "NONE",
   "parentId": "ffv9lr2dml",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 28,
+  "rightColumn": 45,
   "shouldTruncate": false,
-  "text": "Scheduled operations for June period.",
+  "text": "{{ GanttUtil.resourceCount() }}",
   "textAlign": "LEFT",
-  "textColor": "#3b82f6",
-  "topRow": 4,
+  "textColor": "#ef4444",
+  "topRow": 10,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "1547q4ejiw",
-  "widgetName": "late_Orders_DescriptionCopy1"
+  "widgetId": "glo97spruk",
+  "widgetName": "Resources_Utilized_Qty"
 }

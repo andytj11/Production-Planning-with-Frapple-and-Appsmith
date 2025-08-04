@@ -18,7 +18,7 @@
   "isLoading": false,
   "isVisible": true,
   "key": "z5ivsnxxtf",
-  "leftColumn": 33,
+  "leftColumn": 3,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -33,15 +33,15 @@
   "parentId": "ffv9lr2dml",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 61,
+  "rightColumn": 28,
   "shouldTruncate": false,
-  "text": "Distinct resources utilized for June period.",
+  "text": "Scheduled operations for June period.",
   "textAlign": "LEFT",
   "textColor": "#3b82f6",
   "topRow": 4,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "3q8unrc180",
-  "widgetName": "late_Orders_DescriptionCopy1Copy"
+  "widgetId": "1547q4ejiw",
+  "widgetName": "Operations_Scheduled_Text"
 }

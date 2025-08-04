@@ -24,7 +24,7 @@
   "isLoading": false,
   "isVisible": true,
   "key": "z5ivsnxxtf",
-  "leftColumn": 33,
+  "leftColumn": 3,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -39,15 +39,15 @@
   "parentId": "ffv9lr2dml",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 45,
+  "rightColumn": 11,
   "shouldTruncate": false,
-  "text": "{{ GanttUtil.resourceCount() }}",
+  "text": "{{ GanttUtil.juneCount() }}",
   "textAlign": "LEFT",
   "textColor": "#ef4444",
   "topRow": 10,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "glo97spruk",
-  "widgetName": "Late_Orders_QuantityCopyCopy"
+  "widgetId": "tplusj88mb",
+  "widgetName": "Operations_Scheduled_Qty"
 }

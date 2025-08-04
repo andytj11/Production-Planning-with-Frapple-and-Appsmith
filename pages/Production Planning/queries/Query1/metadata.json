@@ -1,0 +1,31 @@
+{
+  "gitSyncId": "6886fa708a78c04a4132ad3c_a52cd61d-3801-4b73-bc75-70dfebb21bc4",
+  "id": "Production Planning_Query1",
+  "pluginId": "postgres-plugin",
+  "pluginType": "DB",
+  "unpublishedAction": {
+    "actionConfiguration": {
+      "body": "/* === Performance indicators – one row per metric =============== */\n\nWITH\n-- 1.   --- late / material-shortage problems ---------------------\nproblems AS (\n  SELECT\n      COUNT(*) AS total_cnt,\n      SUM(weight) AS total_wgt,\n      COUNT(*) FILTER (WHERE bucket < NOW())                        AS cnt_before_current,\n      SUM(weight) FILTER  (WHERE bucket < NOW())                    AS wgt_before_current,\n      COUNT(*) FILTER (WHERE category = 'material')                 AS cnt_material_shortage,\n      SUM(weight) FILTER  (WHERE category = 'material')             AS wgt_material_shortage,\n      COUNT(*) FILTER (WHERE category = 'outlier')                  AS cnt_outlier,\n      SUM(weight) FILTER  (WHERE category = 'outlier')              AS wgt_outlier\n  FROM public.out_problem\n),\n-- 2.   --- demand punctuality ------------------------------------\ndemand AS (\n  SELECT\n      COUNT(*)                                   AS dem_requested,\n      SUM(quantity)                              AS qty_requested,\n      COUNT(*) FILTER (WHERE planned = TRUE)     AS dem_planned,\n      SUM(quantity) FILTER (WHERE planned)       AS qty_planned,\n      COUNT(*) FILTER (WHERE planned AND delay>0)          AS dem_planned_late,\n      SUM(quantity) FILTER (WHERE planned AND delay>0)     AS qty_planned_late,\n      COUNT(*) FILTER (WHERE planned AND delay=0)          AS dem_planned_ontime,\n      SUM(quantity) FILTER (WHERE planned AND delay=0)     AS qty_planned_ontime,\n      COUNT(*) FILTER (WHERE planned=FALSE)      AS dem_unplanned,\n      SUM(quantity) FILTER (WHERE planned=FALSE) AS qty_unplanned,\n      SUM(delay)                                 AS tot_lateness\n  FROM public.demand\n),\n-- 3.   --- executed operations -----------------------------------\nops AS (\n  SELECT\n      COUNT(*)                AS op_cnt,\n      SUM(quantity)           AS op_qty\n  FROM public.operationplan\n  WHERE status='completed'\n),\n-- 4.   --- resource usage ----------------------------------------\nres_usage AS (\n  SELECT\n      COUNT(DISTINCT resource_id)    AS resources_used\n  FROM public.operationplanresource\n)\n\nSELECT * FROM (\n  /* Problem count -------------------------------------------------*/\n  SELECT 'Problem count' AS category, 'before current'     AS name, cnt_before_current::text         AS value FROM problems UNION ALL\n  SELECT 'Problem count', 'material shortage',                   cnt_material_shortage::text        FROM problems UNION ALL\n  SELECT 'Problem count', 'outlier',                             cnt_outlier::text                  FROM problems UNION ALL\n\n  /* Problem weight ------------------------------------------------*/\n  SELECT 'Problem weight', 'before current',                 to_char(wgt_before_current,'FM999G999') FROM problems UNION ALL\n  SELECT 'Problem weight', 'material shortage',              to_char(wgt_material_shortage,'FM999G999') FROM problems UNION ALL\n  SELECT 'Problem weight', 'outlier',                        to_char(wgt_outlier,'FM999G999')        FROM problems UNION ALL\n\n  /* Demand --------------------------------------------------------*/\n  SELECT 'Demand', 'Requested',       dem_requested::text                 FROM demand UNION ALL\n  SELECT 'Demand', 'Planned',         dem_planned::text                   FROM demand UNION ALL\n  SELECT 'Demand', 'Planned late',    dem_planned_late::text              FROM demand UNION ALL\n  SELECT 'Demand', 'Planned on time', dem_planned_ontime::text            FROM demand UNION ALL\n  SELECT 'Demand', 'Unplanned',       dem_unplanned::text                 FROM demand UNION ALL\n  SELECT 'Demand', 'Total lateness',  tot_lateness::text                  FROM demand UNION ALL\n\n  /* Operations ----------------------------------------------------*/\n  SELECT 'Operation', 'Count',        op_cnt::text                        FROM ops UNION ALL\n  SELECT 'Operation', 'Quantity',     to_char(op_qty,'FM999G999')         FROM ops UNION ALL\n\n  /* Resources -----------------------------------------------------*/\n  SELECT 'Resource',  'Usage',        resources_used::text                FROM res_usage UNION ALL\n\n  /* Material (basic example) --------------------------------------*/\n  SELECT 'Material', 'Produced',      to_char(SUM(prod.quantity),'FM999G999')\n  FROM public.out_resourceplan prod WHERE prod.direction='out' UNION ALL\n  SELECT 'Material', 'Consumed',      to_char(SUM(cons.quantity),'FM999G999')\n  FROM public.out_resourceplan cons WHERE cons.direction='in'\n) AS kpi\nORDER BY category, name;\n",
+      "encodeParamsToggle": true,
+      "paginationType": "NONE",
+      "pluginSpecifiedTemplates": [
+        {
+          "value": true
+        }
+      ],
+      "timeoutInMillisecond": 10000
+    },
+    "confirmBeforeExecute": false,
+    "datasource": {
+      "id": "FrePPle Config",
+      "isAutoGenerated": false,
+      "name": "FrePPle Config",
+      "pluginId": "postgres-plugin"
+    },
+    "dynamicBindingPathList": [],
+    "name": "Query1",
+    "pageId": "Production Planning",
+    "runBehaviour": "MANUAL",
+    "userSetOnLoad": false
+  }
+}

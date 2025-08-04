@@ -4,7 +4,7 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "1.5rem",
   "borderWidth": "2\n",
-  "bottomRow": 22,
+  "bottomRow": 24,
   "boxShadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
   "children": [
     {
@@ -66,8 +66,8 @@
   "mobileRightColumn": 56,
   "mobileTopRow": 57,
   "needsErrorInfo": false,
-  "originalBottomRow": 22,
-  "originalTopRow": 5,
+  "originalBottomRow": 24,
+  "originalTopRow": 7,
   "parentColumnSpace": 15.171875,
   "parentId": "0",
   "parentRowSpace": 10,
@@ -76,7 +76,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 12,
   "shouldScrollContents": true,
-  "topRow": 5,
+  "topRow": 7,
   "type": "STATBOX_WIDGET",
   "widgetId": "x8julttl1n",
   "widgetName": "Late_Orders_KPI"

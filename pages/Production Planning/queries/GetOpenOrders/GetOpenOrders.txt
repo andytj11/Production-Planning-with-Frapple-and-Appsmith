@@ -1,0 +1,16 @@
+SELECT
+    d.name                               AS order_name,
+    i.name                               AS item,
+    l.name                               AS location,
+    COALESCE(c.name, '-')                AS customer,
+    d.status,
+    d.quantity,
+    d.due,
+    GREATEST(date_part('day', CURRENT_DATE - d.due), 0)::int
+                                          AS delay_days          -- 0 = on-time
+FROM public.demand            d
+JOIN public.item              i ON i.name      = d.item_id
+JOIN public.location          l ON l.name      = d.location_id
+LEFT JOIN public.customer     c ON c.name      = d.customer_id
+WHERE d.status = 'open'                                            -- only open orders
+ORDER BY delay_days DESC, d.due;
