@@ -1,21 +1,24 @@
 {
   "animateLoading": true,
+  "backgroundColor": "{{appsmith.theme.colors.backgroundColor}}",
+  "borderColor": "#ef4444",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 30,
+  "borderWidth": "0",
+  "bottomRow": 78,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
     },
     {
-      "key": "fontFamily"
+      "key": "borderRadius"
     },
     {
-      "key": "borderRadius"
+      "key": "backgroundColor"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
-  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "fontFamily": "System Default",
   "fontSize": "1rem",
   "fontStyle": "BOLD",
   "isLoading": false,
@@ -30,20 +33,20 @@
   "mobileRightColumn": 23,
   "mobileTopRow": 22,
   "needsErrorInfo": false,
-  "originalBottomRow": 30,
-  "originalTopRow": 26,
+  "originalBottomRow": 78,
+  "originalTopRow": 74,
   "overflow": "NONE",
   "parentColumnSpace": 15.171875,
   "parentId": "0",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 16,
+  "rightColumn": 13,
   "shouldTruncate": false,
   "text": "Proposed Production Orders",
   "textAlign": "LEFT",
   "textColor": "#999999",
-  "topRow": 26,
+  "topRow": 74,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

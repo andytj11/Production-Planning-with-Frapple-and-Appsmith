@@ -1,0 +1,10 @@
+/*  Problems raised by the latest plan – newest first  */
+SELECT
+       entity                 AS "Entity",
+       name                   AS "Name",
+       owner                  AS "Owner",
+       description            AS "Description",
+       weight                 AS "Weight"
+FROM   public.out_problem
+ORDER  BY startdate DESC, entity, name
+LIMIT  200;           -- keep the table light; raise if needed

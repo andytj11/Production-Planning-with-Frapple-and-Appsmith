@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 14,
+  "bottomRow": 6,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -11,43 +11,40 @@
     },
     {
       "key": "borderRadius"
-    },
-    {
-      "key": "text"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
-  "fontSize": "1.25rem",
+  "fontSize": "0.875rem",
   "fontStyle": "BOLD",
   "isLoading": false,
   "isVisible": true,
   "key": "z5ivsnxxtf",
-  "leftColumn": 33,
+  "leftColumn": 2,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 8,
+  "mobileBottomRow": 4,
   "mobileLeftColumn": 1,
   "mobileRightColumn": 37,
-  "mobileTopRow": 4,
+  "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "originalBottomRow": 14,
-  "originalTopRow": 10,
+  "originalBottomRow": 6,
+  "originalTopRow": 1,
   "overflow": "NONE",
-  "parentId": "ffv9lr2dml",
+  "parentId": "n8pdwbb56u",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 45,
+  "rightColumn": 18,
   "shouldTruncate": false,
-  "text": "{{ GanttUtil.resourceCount() }}",
+  "text": "Warehouse Inventory Card\n",
   "textAlign": "LEFT",
-  "textColor": "#fca5a5",
-  "topRow": 10,
+  "textColor": "#999999",
+  "topRow": 1,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "glo97spruk",
-  "widgetName": "Resources_Utilized_Qty"
+  "widgetId": "24ve29ka2t",
+  "widgetName": "Late_Orders_KPI_CardCopy"
 }

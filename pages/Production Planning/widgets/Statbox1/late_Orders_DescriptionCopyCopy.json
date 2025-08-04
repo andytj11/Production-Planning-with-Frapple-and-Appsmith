@@ -1,53 +1,47 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 14,
+  "bottomRow": 6,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
     },
     {
-      "key": "fontFamily"
-    },
-    {
       "key": "borderRadius"
-    },
-    {
-      "key": "text"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
-  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
-  "fontSize": "1.25rem",
-  "fontStyle": "BOLD",
+  "fontFamily": "Ubuntu",
+  "fontSize": "0.875rem",
+  "fontStyle": "BOLD,ITALIC",
   "isLoading": false,
   "isVisible": true,
   "key": "z5ivsnxxtf",
-  "leftColumn": 33,
+  "leftColumn": 21,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 8,
+  "mobileBottomRow": 12,
   "mobileLeftColumn": 1,
   "mobileRightColumn": 37,
-  "mobileTopRow": 4,
+  "mobileTopRow": 8,
   "needsErrorInfo": false,
-  "originalBottomRow": 14,
-  "originalTopRow": 10,
+  "originalBottomRow": 6,
+  "originalTopRow": 1,
   "overflow": "NONE",
-  "parentId": "ffv9lr2dml",
+  "parentId": "n8pdwbb56u",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 45,
+  "rightColumn": 49,
   "shouldTruncate": false,
-  "text": "{{ GanttUtil.resourceCount() }}",
+  "text": "Inventory from completed orders or delivered before today.",
   "textAlign": "LEFT",
-  "textColor": "#fca5a5",
-  "topRow": 10,
+  "textColor": "#3b82f6",
+  "topRow": 1,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "glo97spruk",
-  "widgetName": "Resources_Utilized_Qty"
+  "widgetId": "5gyc35kmhd",
+  "widgetName": "late_Orders_DescriptionCopyCopy"
 }

@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 170,
+  "bottomRow": 217,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -30,20 +30,20 @@
   "mobileRightColumn": 23,
   "mobileTopRow": 22,
   "needsErrorInfo": false,
-  "originalBottomRow": 170,
-  "originalTopRow": 166,
+  "originalBottomRow": 217,
+  "originalTopRow": 213,
   "overflow": "NONE",
   "parentColumnSpace": 15.171875,
   "parentId": "0",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 15,
+  "rightColumn": 14,
   "shouldTruncate": false,
   "text": "Closed Orders",
   "textAlign": "LEFT",
   "textColor": "#999999",
-  "topRow": 166,
+  "topRow": 213,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
