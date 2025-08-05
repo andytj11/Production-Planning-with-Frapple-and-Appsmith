@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 251,
+  "bottomRow": 250,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -30,8 +30,8 @@
   "mobileRightColumn": 23,
   "mobileTopRow": 22,
   "needsErrorInfo": false,
-  "originalBottomRow": 251,
-  "originalTopRow": 247,
+  "originalBottomRow": 250,
+  "originalTopRow": 246,
   "overflow": "NONE",
   "parentColumnSpace": 15.171875,
   "parentId": "0",
@@ -43,7 +43,7 @@
   "text": "Operation Plans - Gantt Chart",
   "textAlign": "LEFT",
   "textColor": "#999999",
-  "topRow": 247,
+  "topRow": 246,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 358,
+  "bottomRow": 357,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -30,8 +30,8 @@
   "mobileRightColumn": 23,
   "mobileTopRow": 22,
   "needsErrorInfo": false,
-  "originalBottomRow": 358,
-  "originalTopRow": 354,
+  "originalBottomRow": 357,
+  "originalTopRow": 353,
   "overflow": "NONE",
   "parentColumnSpace": 15.171875,
   "parentId": "0",
@@ -43,7 +43,7 @@
   "text": "Planned Production Schedule ",
   "textAlign": "LEFT",
   "textColor": "#999999",
-  "topRow": 354,
+  "topRow": 353,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

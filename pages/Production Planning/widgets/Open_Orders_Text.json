@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 183,
+  "bottomRow": 182,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -30,8 +30,8 @@
   "mobileRightColumn": 23,
   "mobileTopRow": 22,
   "needsErrorInfo": false,
-  "originalBottomRow": 183,
-  "originalTopRow": 179,
+  "originalBottomRow": 182,
+  "originalTopRow": 178,
   "overflow": "NONE",
   "parentColumnSpace": 15.171875,
   "parentId": "0",
@@ -43,7 +43,7 @@
   "text": "Open Orders",
   "textAlign": "LEFT",
   "textColor": "#999999",
-  "topRow": 179,
+  "topRow": 178,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

@@ -7,25 +7,28 @@
       "key": "truncateButtonColor"
     },
     {
+      "key": "fontFamily"
+    },
+    {
       "key": "borderRadius"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
-  "fontFamily": "Ubuntu",
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
   "fontSize": "0.875rem",
-  "fontStyle": "BOLD,ITALIC",
+  "fontStyle": "BOLD",
   "isLoading": false,
   "isVisible": true,
   "key": "z5ivsnxxtf",
-  "leftColumn": 21,
+  "leftColumn": 2,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 12,
+  "mobileBottomRow": 4,
   "mobileLeftColumn": 1,
   "mobileRightColumn": 37,
-  "mobileTopRow": 8,
+  "mobileTopRow": 0,
   "needsErrorInfo": false,
   "originalBottomRow": 6,
   "originalTopRow": 1,
@@ -33,15 +36,15 @@
   "parentId": "n8pdwbb56u",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 49,
+  "rightColumn": 18,
   "shouldTruncate": false,
-  "text": "Inventory from completed orders or delivered before today.",
+  "text": "Warehouse Inventory Card\n",
   "textAlign": "LEFT",
-  "textColor": "#3b82f6",
+  "textColor": "#999999",
   "topRow": 1,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "5gyc35kmhd",
-  "widgetName": "late_Orders_DescriptionCopyCopy"
+  "widgetId": "24ve29ka2t",
+  "widgetName": "Warehouse_Inventory_Text"
 }

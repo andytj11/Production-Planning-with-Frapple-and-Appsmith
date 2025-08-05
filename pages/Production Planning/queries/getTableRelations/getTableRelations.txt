@@ -1,0 +1,57 @@
+/*──────────  PERFORMANCE-INDICATOR GRID  ──────────*/
+WITH                                                   -- 1 ◄ Problems
+p AS (
+  SELECT
+      COUNT(*) FILTER (WHERE name = 'late')                AS late_cnt,
+      COUNT(*) FILTER (WHERE name = 'material shortage')   AS mat_short_cnt,
+      COUNT(*) FILTER (WHERE name = 'outlier')             AS outlier_cnt,
+      COALESCE(SUM(weight) FILTER (WHERE name = 'late'),0)               AS late_wgt,
+      COALESCE(SUM(weight) FILTER (WHERE name = 'material shortage'),0)  AS mat_short_wgt,
+      COALESCE(SUM(weight) FILTER (WHERE name = 'outlier'),0)            AS outlier_wgt
+  FROM   public.out_problem
+),                                                    -- 2 ◄ Demand
+d AS (
+  SELECT
+      COUNT(*)                                                   AS requested,
+      COUNT(*)                                                   AS planned,          -- same rows
+      COUNT(*) FILTER (WHERE date_part('day', delay) > 0)        AS planned_late,
+      COUNT(*) FILTER (WHERE date_part('day', delay) <= 0)       AS planned_ontime,
+      COUNT(*) FILTER (WHERE status = 'unplanned')               AS unplanned,
+      COALESCE(SUM(date_part('day', delay)),0)                   AS total_lateness
+  FROM   public.demand
+),                                                    -- 3 ◄ Operations
+o AS (
+  SELECT
+      COUNT(*)                        AS op_count,
+      COALESCE(SUM(quantity),0)       AS op_qty
+  FROM   public.operationplan
+),                                                    -- 4 ◄ Resource usage
+r AS (
+  SELECT
+      COUNT(DISTINCT resource_id)     AS res_usage
+  FROM   public.operationplanresource
+),                                                    -- 5 ◄ Materials
+m AS (
+  SELECT
+      COALESCE(SUM(CASE WHEN quantity > 0 THEN quantity END),0)        AS produced,
+      COALESCE(ABS(SUM(CASE WHEN quantity < 0 THEN quantity END)),0)   AS consumed
+  FROM   public.operationplanmaterial
+)
+/*──────────  UNION list returned as (category,name,value) ──────────*/
+SELECT 'Problem count','late',                late_cnt          FROM p UNION ALL
+SELECT 'Problem count','material shortage',   mat_short_cnt     FROM p UNION ALL
+SELECT 'Problem count','outlier',             outlier_cnt       FROM p UNION ALL
+SELECT 'Problem weight','late',               late_wgt          FROM p UNION ALL
+SELECT 'Problem weight','material shortage',  mat_short_wgt     FROM p UNION ALL
+SELECT 'Problem weight','outlier',            outlier_wgt       FROM p UNION ALL
+SELECT 'Demand','Requested',                  requested         FROM d UNION ALL
+SELECT 'Demand','Planned',                    planned           FROM d UNION ALL
+SELECT 'Demand','Planned late',               planned_late      FROM d UNION ALL
+SELECT 'Demand','Planned on time',            planned_ontime    FROM d UNION ALL
+SELECT 'Demand','Unplanned',                  unplanned         FROM d UNION ALL
+SELECT 'Demand','Total lateness',             total_lateness    FROM d UNION ALL
+SELECT 'Operation','Count',                   op_count          FROM o UNION ALL
+SELECT 'Operation','Quantity',                op_qty            FROM o UNION ALL
+SELECT 'Resource','Usage',                    res_usage         FROM r UNION ALL
+SELECT 'Material','Produced',                 produced          FROM m UNION ALL
+SELECT 'Material','Consumed',                 consumed          FROM m;

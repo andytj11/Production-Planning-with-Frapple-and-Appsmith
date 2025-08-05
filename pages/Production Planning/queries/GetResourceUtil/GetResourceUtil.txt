@@ -1,0 +1,12 @@
+/* name the query GetResourceUtil; run on page-load */
+SELECT
+       r.name   AS resource,
+       ROUND(
+         100.0 * SUM(COALESCE(opr.quantity,0))
+                 / NULLIF(SUM(r.maximum),0)
+       ,1)      AS util_pct
+FROM   public.resource r
+LEFT   JOIN public.operationplanresource opr
+       ON opr.resource_id = r.name
+GROUP  BY r.name
+ORDER  BY r.name;

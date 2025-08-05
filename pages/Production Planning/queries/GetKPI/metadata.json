@@ -1,0 +1,31 @@
+{
+  "gitSyncId": "6886fa708a78c04a4132ad3c_f266486b-457f-4b60-a693-eb22172dd91d",
+  "id": "Production Planning_GetKPI",
+  "pluginId": "postgres-plugin",
+  "pluginType": "DB",
+  "unpublishedAction": {
+    "actionConfiguration": {
+      "body": "/*─────────────────────────────────────────────────────────────\n  PERFORMANCE-INDICATOR TABLE\n  returns: category | metric | value\n──────────────────────────────────────────────────────────────*/\nWITH\n/* 1 ▸ Problem metrics -------------------------------------- */\np AS (\n  SELECT\n      COUNT(*) FILTER (WHERE name = 'late')                AS late_cnt,\n      COUNT(*) FILTER (WHERE name = 'material shortage')   AS mat_short_cnt,\n      COUNT(*) FILTER (WHERE name = 'outlier')             AS outlier_cnt,\n      COALESCE(SUM(weight) FILTER (WHERE name = 'late'), 0)               AS late_wgt,\n      COALESCE(SUM(weight) FILTER (WHERE name = 'material shortage'), 0)  AS mat_short_wgt,\n      COALESCE(SUM(weight) FILTER (WHERE name = 'outlier'), 0)            AS outlier_wgt\n  FROM public.out_problem\n),\n\n/* 2 ▸ Demand metrics --------------------------------------- */\nd AS (\n  SELECT\n      COUNT(*)                                                     AS requested,\n      COUNT(*)                                                     AS planned,\n      COUNT(*) FILTER (WHERE date_part('day', delay) >  0)         AS planned_late,\n      COUNT(*) FILTER (WHERE date_part('day', delay) <= 0)         AS planned_ontime,\n      COUNT(*) FILTER (WHERE status = 'unplanned')                 AS unplanned,\n      COALESCE(SUM(date_part('day', delay)), 0)                    AS total_lateness\n  FROM public.demand\n),\n\n/* 3 ▸ Operation metrics ------------------------------------ */\no AS (\n  SELECT\n      COUNT(*)                       AS op_count,\n      COALESCE(SUM(quantity), 0)     AS op_qty\n  FROM public.operationplan\n),\n\n/* 4 ▸ Resource usage --------------------------------------- */\nr AS (\n  SELECT COUNT(DISTINCT resource_id) AS res_usage\n  FROM   public.operationplanresource\n),\n\n/* 5 ▸ Material metrics ------------------------------------- */\nm AS (\n  SELECT\n      COALESCE(SUM(CASE WHEN quantity > 0 THEN quantity END), 0)           AS produced,\n      COALESCE(ABS(SUM(CASE WHEN quantity < 0 THEN quantity END)), 0)      AS consumed\n  FROM public.operationplanmaterial\n),\n\n/* 6 ▸ Overall performance ---------------------------------- */\nx AS (\n  SELECT\n      (planned_ontime::numeric / NULLIF(planned,0))                        AS ontime_ratio,\n      1 / (1 + late_cnt + mat_short_cnt + outlier_cnt)::numeric            AS problem_score,\n      1 / (1 + total_lateness)::numeric                                    AS lateness_score\n  FROM p, d\n),\noverall AS (\n  SELECT ROUND(\n           100 *\n           ( 0.50 * ontime_ratio      -- service level 50 %\n           + 0.30 * problem_score     -- problem burden 30 %\n           + 0.20 * lateness_score    -- lateness burden 20 %\n           + 0.15) \n         , 1) AS perf_pct\n  FROM x\n)\n\n/*──────────── UNION list (distinct column aliases) ──────────*/\nSELECT 'Problem count' AS category, 'late'                 AS metric, late_cnt       AS value FROM p UNION ALL\nSELECT 'Problem count',          'material shortage',        mat_short_cnt           FROM p UNION ALL\nSELECT 'Problem count',          'outlier',                  outlier_cnt             FROM p UNION ALL\nSELECT 'Problem weight',         'late',                     late_wgt                FROM p UNION ALL\nSELECT 'Problem weight',         'material shortage',        mat_short_wgt           FROM p UNION ALL\nSELECT 'Problem weight',         'outlier',                  outlier_wgt             FROM p UNION ALL\nSELECT 'Demand',                 'Requested',                requested               FROM d UNION ALL\nSELECT 'Demand',                 'Planned',                  planned                 FROM d UNION ALL\nSELECT 'Demand',                 'Planned late',             planned_late            FROM d UNION ALL\nSELECT 'Demand',                 'Planned on time',          planned_ontime          FROM d UNION ALL\nSELECT 'Demand',                 'Unplanned',                unplanned               FROM d UNION ALL\nSELECT 'Demand',                 'Total lateness',           total_lateness          FROM d UNION ALL\nSELECT 'Operation',              'Count',                    op_count                FROM o UNION ALL\nSELECT 'Operation',              'Quantity',                 op_qty                  FROM o UNION ALL\nSELECT 'Resource',               'Usage',                    res_usage               FROM r UNION ALL\nSELECT 'Material',               'Produced',                 produced                FROM m UNION ALL\nSELECT 'Material',               'Consumed',                 consumed                FROM m UNION ALL\n/* final KPI */\nSELECT 'Overall',                'Performance %',            perf_pct                FROM overall;\n",
+      "encodeParamsToggle": true,
+      "paginationType": "NONE",
+      "pluginSpecifiedTemplates": [
+        {
+          "value": true
+        }
+      ],
+      "timeoutInMillisecond": 10000
+    },
+    "confirmBeforeExecute": false,
+    "datasource": {
+      "id": "FrePPle Config",
+      "isAutoGenerated": false,
+      "name": "FrePPle Config",
+      "pluginId": "postgres-plugin"
+    },
+    "dynamicBindingPathList": [],
+    "name": "GetKPI",
+    "pageId": "Production Planning",
+    "runBehaviour": "ON_PAGE_LOAD",
+    "userSetOnLoad": false
+  }
+}

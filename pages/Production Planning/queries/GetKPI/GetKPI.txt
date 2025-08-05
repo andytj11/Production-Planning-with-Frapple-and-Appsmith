@@ -1,0 +1,90 @@
+/*─────────────────────────────────────────────────────────────
+  PERFORMANCE-INDICATOR TABLE
+  returns: category | metric | value
+──────────────────────────────────────────────────────────────*/
+WITH
+/* 1 ▸ Problem metrics -------------------------------------- */
+p AS (
+  SELECT
+      COUNT(*) FILTER (WHERE name = 'late')                AS late_cnt,
+      COUNT(*) FILTER (WHERE name = 'material shortage')   AS mat_short_cnt,
+      COUNT(*) FILTER (WHERE name = 'outlier')             AS outlier_cnt,
+      COALESCE(SUM(weight) FILTER (WHERE name = 'late'), 0)               AS late_wgt,
+      COALESCE(SUM(weight) FILTER (WHERE name = 'material shortage'), 0)  AS mat_short_wgt,
+      COALESCE(SUM(weight) FILTER (WHERE name = 'outlier'), 0)            AS outlier_wgt
+  FROM public.out_problem
+),
+
+/* 2 ▸ Demand metrics --------------------------------------- */
+d AS (
+  SELECT
+      COUNT(*)                                                     AS requested,
+      COUNT(*)                                                     AS planned,
+      COUNT(*) FILTER (WHERE date_part('day', delay) >  0)         AS planned_late,
+      COUNT(*) FILTER (WHERE date_part('day', delay) <= 0)         AS planned_ontime,
+      COUNT(*) FILTER (WHERE status = 'unplanned')                 AS unplanned,
+      COALESCE(SUM(date_part('day', delay)), 0)                    AS total_lateness
+  FROM public.demand
+),
+
+/* 3 ▸ Operation metrics ------------------------------------ */
+o AS (
+  SELECT
+      COUNT(*)                       AS op_count,
+      COALESCE(SUM(quantity), 0)     AS op_qty
+  FROM public.operationplan
+),
+
+/* 4 ▸ Resource usage --------------------------------------- */
+r AS (
+  SELECT COUNT(DISTINCT resource_id) AS res_usage
+  FROM   public.operationplanresource
+),
+
+/* 5 ▸ Material metrics ------------------------------------- */
+m AS (
+  SELECT
+      COALESCE(SUM(CASE WHEN quantity > 0 THEN quantity END), 0)           AS produced,
+      COALESCE(ABS(SUM(CASE WHEN quantity < 0 THEN quantity END)), 0)      AS consumed
+  FROM public.operationplanmaterial
+),
+
+/* 6 ▸ Overall performance ---------------------------------- */
+x AS (
+  SELECT
+      (planned_ontime::numeric / NULLIF(planned,0))                        AS ontime_ratio,
+      1 / (1 + late_cnt + mat_short_cnt + outlier_cnt)::numeric            AS problem_score,
+      1 / (1 + total_lateness)::numeric                                    AS lateness_score
+  FROM p, d
+),
+overall AS (
+  SELECT ROUND(
+           100 *
+           ( 0.50 * ontime_ratio      -- service level 50 %
+           + 0.30 * problem_score     -- problem burden 30 %
+           + 0.20 * lateness_score    -- lateness burden 20 %
+           + 0.15) 
+         , 1) AS perf_pct
+  FROM x
+)
+
+/*──────────── UNION list (distinct column aliases) ──────────*/
+SELECT 'Problem count' AS category, 'late'                 AS metric, late_cnt       AS value FROM p UNION ALL
+SELECT 'Problem count',          'material shortage',        mat_short_cnt           FROM p UNION ALL
+SELECT 'Problem count',          'outlier',                  outlier_cnt             FROM p UNION ALL
+SELECT 'Problem weight',         'late',                     late_wgt                FROM p UNION ALL
+SELECT 'Problem weight',         'material shortage',        mat_short_wgt           FROM p UNION ALL
+SELECT 'Problem weight',         'outlier',                  outlier_wgt             FROM p UNION ALL
+SELECT 'Demand',                 'Requested',                requested               FROM d UNION ALL
+SELECT 'Demand',                 'Planned',                  planned                 FROM d UNION ALL
+SELECT 'Demand',                 'Planned late',             planned_late            FROM d UNION ALL
+SELECT 'Demand',                 'Planned on time',          planned_ontime          FROM d UNION ALL
+SELECT 'Demand',                 'Unplanned',                unplanned               FROM d UNION ALL
+SELECT 'Demand',                 'Total lateness',           total_lateness          FROM d UNION ALL
+SELECT 'Operation',              'Count',                    op_count                FROM o UNION ALL
+SELECT 'Operation',              'Quantity',                 op_qty                  FROM o UNION ALL
+SELECT 'Resource',               'Usage',                    res_usage               FROM r UNION ALL
+SELECT 'Material',               'Produced',                 produced                FROM m UNION ALL
+SELECT 'Material',               'Consumed',                 consumed                FROM m UNION ALL
+/* final KPI */
+SELECT 'Overall',                'Performance %',            perf_pct                FROM overall;
