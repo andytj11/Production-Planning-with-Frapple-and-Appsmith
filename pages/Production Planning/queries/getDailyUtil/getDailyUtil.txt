@@ -1,0 +1,11 @@
+/* Daily utilisation % per resource */
+SELECT
+    resource,                                   -- text column in your table
+    date(startdate)                  AS day,
+    ROUND(
+        100.0 * SUM(load) /
+        NULLIF( SUM(available + setup), 0)
+    , 1)                             AS util_pct
+FROM public.out_resourceplan
+GROUP BY 1, 2
+ORDER BY 1, 2;

@@ -1,0 +1,118 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "allowScroll": false,
+  "animateLoading": true,
+  "borderRadius": "1.5rem",
+  "bottomRow": 79,
+  "boxShadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+  "chartData": {
+    "azbsl5bxr2": {
+      "data": [
+        {
+          "x": "Product1",
+          "y": 20000
+        },
+        {
+          "x": "Product2",
+          "y": 22000
+        },
+        {
+          "x": "Product3",
+          "y": 32000
+        }
+      ],
+      "seriesName": "2023"
+    }
+  },
+  "chartName": "Sales Report",
+  "chartType": "CUSTOM_ECHART",
+  "customEChartConfig": "{{ ((chartType) => ( \n({\n  title: {\n    text: 'Overall Performance',\n    left: '3%', \n    top: 12,\n    textStyle: { fontSize: 22, fontWeight: 700, color: '#999999'  }\n  },\n\n  series: [{\n    type: 'gauge',\n\n    /* smaller dial}}{{higher placement → less vertical space */\n    center: ['50%', '60%'],   // move dial up\n    radius: '70%',            // shrink arc\n\n    startAngle: 210,\n    endAngle: -30,\n\n    axisLine: {\n      lineStyle: {\n        width: 22,\n        color: [\n          [0.15, '#c84c4c'],  // red\n          [0.75, '#e9bb6b'],  // amber\n          [1.00, '#3b82f6']   // blue\n        ]\n      }\n    },\n\n    splitNumber: 4,\n    axisTick:  { length: 7, distance: -20 },\n    splitLine: { length: 12, distance: -20 },\n    axisLabel: { distance: -34, fontSize: 13, formatter: '{value}%' },\n\n    pointer: { length: '65%', width: 4, itemStyle: { color: '#000' } },\n\n    detail: {\n      formatter: '{value}%',\n      fontSize: 30,\n      fontWeight: 'bold',\n      offsetCenter: [0, '82%'], color: '#fca5a5'    // still clear of arc\n    },\n\n    data: [{\n      value: (\n        (getKPI.data || []).find(\n          r => r.category === 'Overall' &&\n               (r.metric ?? r.name) === 'Performance %'\n        )?.value || 0\n      )\n    }]\n  }]\n})\n))(Overall_Performance_Gauge.chartType) }}",
+  "customFusionChartConfig": {
+    "dataSource": {
+      "chart": {
+        "alignCaptionWithCanvas": 1,
+        "canvasPadding": "0",
+        "caption": "Sales Report",
+        "captionAlignment": "center",
+        "captionFontColor": "#231F20",
+        "captionFontSize": "24",
+        "captionPadding": "20",
+        "chartBottomMargin": "10",
+        "chartLeftMargin": "20",
+        "chartRightMargin": "40",
+        "chartTopMargin": "10",
+        "labelFontColor": "#716e6e",
+        "labelFontSize": "12",
+        "legendIconAlpha": "100",
+        "legendIconBgAlpha": "100",
+        "legendIconSides": "4",
+        "legendPosition": "top",
+        "theme": "fusion",
+        "xAxisName": "Product Line",
+        "xAxisNameFontColor": "#716e6e",
+        "xAxisNameFontSize": "14",
+        "yAxisName": "Revenue($)",
+        "yAxisNameFontColor": "#716e6e",
+        "yAxisNameFontSize": "14",
+        "yAxisValueFontColor": "#716e6e",
+        "yAxisValueFontSize": "12"
+      },
+      "data": [
+        {
+          "label": "Product1",
+          "value": 20000
+        },
+        {
+          "label": "Product2",
+          "value": 22000
+        },
+        {
+          "label": "Product3",
+          "value": 32000
+        }
+      ]
+    },
+    "type": "column2d"
+  },
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "fontFamily"
+    },
+    {
+      "key": "customEChartConfig"
+    }
+  ],
+  "dynamicTriggerPathList": [],
+  "flexVerticalAlignment": "start",
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "isLoading": false,
+  "isVisible": true,
+  "key": "amt0nmvdf9",
+  "labelOrientation": "auto",
+  "leftColumn": 32,
+  "minWidth": 450,
+  "mobileBottomRow": 612,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 15,
+  "mobileTopRow": 580,
+  "needsErrorInfo": true,
+  "originalBottomRow": 79,
+  "originalTopRow": 37,
+  "parentColumnSpace": 17.9375,
+  "parentId": "0",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 64,
+  "showDataPointLabel": false,
+  "topRow": 37,
+  "type": "CHART_WIDGET",
+  "version": 1,
+  "widgetId": "lvbwdho1m5",
+  "widgetName": "Overall_Performance_Gauge",
+  "xAxisName": "Product Line",
+  "yAxisName": "Revenue($)"
+}

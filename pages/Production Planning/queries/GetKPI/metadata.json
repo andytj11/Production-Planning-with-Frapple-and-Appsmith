@@ -1,6 +1,6 @@
 {
   "gitSyncId": "6886fa708a78c04a4132ad3c_f266486b-457f-4b60-a693-eb22172dd91d",
-  "id": "Production Planning_GetKPI",
+  "id": "Production Planning_getKPI",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
@@ -23,7 +23,7 @@
       "pluginId": "postgres-plugin"
     },
     "dynamicBindingPathList": [],
-    "name": "GetKPI",
+    "name": "getKPI",
     "pageId": "Production Planning",
     "runBehaviour": "ON_PAGE_LOAD",
     "userSetOnLoad": false

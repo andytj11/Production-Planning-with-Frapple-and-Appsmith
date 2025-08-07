@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6886fa708a78c04a4132ad3c_62ac6269-aad9-43ba-b998-cdcad21681e8",
-  "id": "Production Planning_getResourceUtil",
+  "gitSyncId": "6886fa708a78c04a4132ad3c_3d6479d0-da13-41b9-a079-e02914fe239b",
+  "id": "Production Planning_Query1",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "/* name the query GetResourceUtil; run on page-load */\nSELECT\n       r.name   AS resource,\n       ROUND(\n         100.0 * SUM(COALESCE(opr.quantity,0))\n                 / NULLIF(SUM(r.maximum),0)\n       ,1)      AS util_pct\nFROM   public.resource r\nLEFT   JOIN public.operationplanresource opr\n       ON opr.resource_id = r.name\nGROUP  BY r.name\nORDER  BY r.name;\n",
+      "body": "WITH RECURSIVE bom(level,parent,child,qty) AS ( SELECT 1, operation_id, item_id, 1 FROM public.operationmaterial WHERE item_id='chair' UNION ALL SELECT level+1, m.operation_id, m.item_id, qty FROM bom b JOIN public.operationmaterial m ON m.operation_id=b.parent ) SELECT * FROM bom;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -23,9 +23,9 @@
       "pluginId": "postgres-plugin"
     },
     "dynamicBindingPathList": [],
-    "name": "getResourceUtil",
+    "name": "Query1",
     "pageId": "Production Planning",
-    "runBehaviour": "ON_PAGE_LOAD",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

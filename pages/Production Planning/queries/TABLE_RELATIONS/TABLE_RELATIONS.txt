@@ -1,0 +1,1 @@
+SELECT * FROM public.out_resourceplan;

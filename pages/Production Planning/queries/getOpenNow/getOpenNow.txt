@@ -1,0 +1,1 @@
+SELECT COUNT(*) AS open_now FROM public.demand WHERE status='open';

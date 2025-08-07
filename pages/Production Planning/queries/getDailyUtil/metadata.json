@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6886fa708a78c04a4132ad3c_62ac6269-aad9-43ba-b998-cdcad21681e8",
-  "id": "Production Planning_getResourceUtil",
+  "gitSyncId": "6886fa708a78c04a4132ad3c_9dce18da-50b6-46e7-88bc-fb4241cdc6e9",
+  "id": "Production Planning_getDailyUtil",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "/* name the query GetResourceUtil; run on page-load */\nSELECT\n       r.name   AS resource,\n       ROUND(\n         100.0 * SUM(COALESCE(opr.quantity,0))\n                 / NULLIF(SUM(r.maximum),0)\n       ,1)      AS util_pct\nFROM   public.resource r\nLEFT   JOIN public.operationplanresource opr\n       ON opr.resource_id = r.name\nGROUP  BY r.name\nORDER  BY r.name;\n",
+      "body": "/* Daily utilisation % per resource */\nSELECT\n    resource,                                   -- text column in your table\n    date(startdate)                  AS day,\n    ROUND(\n        100.0 * SUM(load) /\n        NULLIF( SUM(available + setup), 0)\n    , 1)                             AS util_pct\nFROM public.out_resourceplan\nGROUP BY 1, 2\nORDER BY 1, 2;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -23,7 +23,7 @@
       "pluginId": "postgres-plugin"
     },
     "dynamicBindingPathList": [],
-    "name": "getResourceUtil",
+    "name": "getDailyUtil",
     "pageId": "Production Planning",
     "runBehaviour": "ON_PAGE_LOAD",
     "userSetOnLoad": false

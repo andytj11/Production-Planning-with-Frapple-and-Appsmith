@@ -1,0 +1,1 @@
+WITH RECURSIVE bom(level,parent,child,qty) AS ( SELECT 1, operation_id, item_id, 1 FROM public.operationmaterial WHERE item_id='chair' UNION ALL SELECT level+1, m.operation_id, m.item_id, qty FROM bom b JOIN public.operationmaterial m ON m.operation_id=b.parent ) SELECT * FROM bom;

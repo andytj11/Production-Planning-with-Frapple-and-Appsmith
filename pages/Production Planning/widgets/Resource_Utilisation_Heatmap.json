@@ -3,10 +3,10 @@
   "allowScroll": false,
   "animateLoading": true,
   "borderRadius": "1.5rem",
-  "bottomRow": 531,
+  "bottomRow": 538,
   "boxShadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
   "chartData": {
-    "azbsl5bxr2": {
+    "ufmjud1qfj": {
       "data": [
         {
           "x": "Product1",
@@ -26,7 +26,7 @@
   },
   "chartName": "Sales Report",
   "chartType": "CUSTOM_ECHART",
-  "customEChartConfig": "{{ ((chartType) => ( \n({\n  title: {\n    text: 'Overall performance',\n    left: '3%', \n    top: 12,\n    textStyle: { fontSize: 22, fontWeight: 700 }\n  },\n\n  series: [{\n    type: 'gauge',\n\n    /* smaller dial}}{{higher placement → less vertical space */\n    center: ['50%', '60%'],   // move dial up\n    radius: '70%',            // shrink arc\n\n    startAngle: 210,\n    endAngle: -30,\n\n    axisLine: {\n      lineStyle: {\n        width: 22,\n        color: [\n          [0.15, '#c84c4c'],  // red\n          [0.75, '#e9bb6b'],  // amber\n          [1.00, '#3b82f6']   // blue\n        ]\n      }\n    },\n\n    splitNumber: 4,\n    axisTick:  { length: 7, distance: -20 },\n    splitLine: { length: 12, distance: -20 },\n    axisLabel: { distance: -34, fontSize: 13, formatter: '{value}%' },\n\n    pointer: { length: '65%', width: 4, itemStyle: { color: '#000' } },\n\n    detail: {\n      formatter: '{value}%',\n      fontSize: 30,\n      fontWeight: 'bold',\n      offsetCenter: [0, '82%']   // still clear of arc\n    },\n\n    data: [{\n      value: (\n        (GetKPI.data || []).find(\n          r => r.category === 'Overall' &&\n               (r.metric ?? r.name) === 'Performance %'\n        )?.value || 0\n      )\n    }]\n  }]\n})\n))(Chart2.chartType) }}",
+  "customEChartConfig": "{{ ((chartType) => ( \n(() => {\n  const rows = (getDailyUtil.data || [])\n    .filter(r => {\n      const d = new Date(r.day);\n      return d >= new Date('2019-06-26') &&\n             d <= new Date('2019-07-07') &&\n             r.resource !== 'grinder';\n    });\n\n  const days      = [...new Set(rows.map(r => r.day))]\n                    .sort((a,b) => new Date(a)-new Date(b));\n  const resources = [...new Set(rows.map(r => r.resource))];\n\n  const data = rows.map(r => [\n    days.indexOf(r.day),\n    resources.indexOf(r.resource),\n    r.util_pct\n  ]);\n\n  return {\n    tooltip:{\n      position:'top',\n      formatter:p=>`${resources[p.value[1]]}<br>${days[p.value[0]]}: ${p.value[2]} %`\n    },\n    grid:{ top:30,left:90,right:15,bottom:55 },        // extra bottom for labels\n    xAxis:{\n      type:'category',\n      position:'bottom',\n      offset:2,\n      data:days,\n      axisLabel:{ rotate:35,margin:6,fontSize:10 },\n      axisTick:{ length:3 },\n      splitArea:{ show:true }\n    },\n    yAxis:{\n      type:'category',\n      data:resources,\n      axisLabel:{ fontSize:11 },\n      splitArea:{ show:true }\n    },\n    visualMap:{\n      min:0,max:100,orient:'horizontal',left:'center',bottom:4,show:false,\n      pieces:[\n        { min:0,max:40,color:'#ffffb2' },\n        { min:40,max:60,color:'#fed976' },\n        { min:60,max:75,color:'#feb24c' },\n        { min:75,max:90,color:'#fd8d3c' },\n        { min:90,max:100,color:'#e31a1c' }\n      ]\n    },\n    series:[{\n      type:'heatmap',\n      data,\n      itemStyle:{\n        borderWidth:0.5,borderColor:'#eeeeee',\n        opacity:p=>p.value[2]<5?0.10:1\n      },\n      emphasis:{ itemStyle:{ shadowBlur:8 } }\n    }]\n  };\n})()\n))(Resource_Utilisation_Heatmap.chartType) }}",
   "customFusionChartConfig": {
     "dataSource": {
       "chart": {
@@ -90,29 +90,29 @@
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
   "isLoading": false,
   "isVisible": true,
-  "key": "amt0nmvdf9",
+  "key": "5xmhe7xx6o",
   "labelOrientation": "auto",
-  "leftColumn": 33,
+  "leftColumn": 0,
   "minWidth": 450,
-  "mobileBottomRow": 612,
-  "mobileLeftColumn": 0,
-  "mobileRightColumn": 15,
-  "mobileTopRow": 580,
+  "mobileBottomRow": 571,
+  "mobileLeftColumn": 3,
+  "mobileRightColumn": 27,
+  "mobileTopRow": 539,
   "needsErrorInfo": true,
-  "originalBottomRow": 531,
-  "originalTopRow": 503,
+  "originalBottomRow": 538,
+  "originalTopRow": 517,
   "parentColumnSpace": 17.9375,
   "parentId": "0",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 64,
+  "rightColumn": 26,
   "showDataPointLabel": false,
-  "topRow": 503,
+  "topRow": 517,
   "type": "CHART_WIDGET",
   "version": 1,
-  "widgetId": "auv24hmei3",
-  "widgetName": "Chart2",
+  "widgetId": "72mhrc08jq",
+  "widgetName": "Resource_Utilisation_Heatmap",
   "xAxisName": "Product Line",
   "yAxisName": "Revenue($)"
 }

@@ -1,0 +1,75 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "allowScroll": false,
+  "animateLoading": true,
+  "borderRadius": "1.5rem",
+  "bottomRow": 35,
+  "boxShadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+  "chartData": {
+    "2ttjtcjzqv": {
+      "data": [
+        {
+          "x": "Product1",
+          "y": 20000
+        },
+        {
+          "x": "Product2",
+          "y": 22000
+        },
+        {
+          "x": "Product3",
+          "y": 32000
+        }
+      ],
+      "seriesName": "2023"
+    }
+  },
+  "chartName": "Sales Report",
+  "chartType": "CUSTOM_FUSION_CHART",
+  "customEChartConfig": "{{ ((chartType) => ( \n({\n  type: \"hled\",             // horizontal LED\n  dataFormat: \"json\",\n  width: \"100%\",\n  height: \"120\",\n\n  dataSource: {\n    chart: {\n      caption: \"Open orders - real-time\",\n      lowerlimit: \"0\",\n      upperlimit: \"50\",     // max scale (set to something above worst-case)\n      numbersuffix: \"\",     // no '%' etc.\n      showvalue: \"1\",\n      useSameFillColor: \"1\",\n      theme: \"fusion\"\n    },\n\n    colorRange: {\n      color: [\n        { minValue: \"0\",    maxValue: \"10\",  code: \"#2e7d32\" },   // green  0-10\n        { minValue: \"10\",   maxValue: \"20\",  code: \"#f6ad55\" },   // amber 10-20\n        { minValue: \"20\",   maxValue: \"50\",  code: \"#d32f2f\" }    // red   >20\n      ]\n    },\n\n    value: {{ \n      // fetch the single field from your query (falls back to 0 while loading)\n      (GetOpenNow.data || [])[0]?.open_now ?? 0 \n    }}\n  }\n})\n))(Chart3.chartType) }}",
+  "customFusionChartConfig": "{{\n({\n  type: \"hled\",\n  dataFormat: \"json\",\n  width: \"100%\",\n  height: \"120\",\n\n  dataSource: {\n    chart: {\n      caption: \"Real-Time Open Orders Meter\",\n\t\t\tcaptionFontColor: \"#999999\", \n      lowerlimit: \"0\",\n      upperlimit: \"10\",\n      showvalue: \"1\",\n      useSameFillColor: \"1\",\n      theme: \"fusion\"\n    },\n\n    colorRange: {\n      color: [\n        { minValue: \"7\",  maxValue: \"10\", code: \"#2e7d32\" },\n        { minValue: \"3\", maxValue: \"6\", code: \"#f6ad55\" },\n        { minValue: \"0\", maxValue: \"2\", code: \"#d32f2f\" }\n      ]\n    },\n\n    /* single numeric value for the LED */\n    value: (\n      (getOpenNow.data || [])[0]?.open_now ?? 0\n    )\n  }\n})\n}}\n",
+  "dynamicBindingPathList": [
+    {
+      "key": "customEChartConfig"
+    },
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "fontFamily"
+    },
+    {
+      "key": "customFusionChartConfig"
+    }
+  ],
+  "dynamicTriggerPathList": [],
+  "flexVerticalAlignment": "start",
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "isLoading": false,
+  "isVisible": true,
+  "key": "2qkbhwsdjx",
+  "labelOrientation": "auto",
+  "leftColumn": 32,
+  "minWidth": 450,
+  "mobileBottomRow": 573,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 17,
+  "mobileTopRow": 541,
+  "needsErrorInfo": true,
+  "originalBottomRow": 35,
+  "originalTopRow": 25,
+  "parentColumnSpace": 17.9375,
+  "parentId": "0",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 64,
+  "showDataPointLabel": false,
+  "topRow": 25,
+  "type": "CHART_WIDGET",
+  "version": 1,
+  "widgetId": "g8c46kuu2k",
+  "widgetName": "Real_Time_Open_Orders_Meter",
+  "xAxisName": "Product Line",
+  "yAxisName": "Revenue($)"
+}

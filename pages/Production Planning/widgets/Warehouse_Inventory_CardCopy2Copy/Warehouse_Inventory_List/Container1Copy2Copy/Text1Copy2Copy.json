@@ -1,8 +1,12 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 6,
+  "bottomRow": 4,
+  "boxShadow": "none",
   "dynamicBindingPathList": [
+    {
+      "key": "text"
+    },
     {
       "key": "truncateButtonColor"
     },
@@ -11,40 +15,42 @@
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "text"
     }
   ],
-  "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicHeight": "FIXED",
   "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
-  "fontSize": "0.875rem",
+  "fontSize": "1rem",
   "fontStyle": "BOLD",
   "isLoading": false,
   "isVisible": true,
-  "key": "z5ivsnxxtf",
-  "leftColumn": 2,
+  "key": "wf59ps4ppy",
+  "leftColumn": 19,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
   "mobileBottomRow": 4,
-  "mobileLeftColumn": 1,
-  "mobileRightColumn": 37,
+  "mobileLeftColumn": 16,
+  "mobileRightColumn": 28,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "originalBottomRow": 6,
-  "originalTopRow": 1,
   "overflow": "NONE",
-  "parentId": "n8pdwbb56u",
+  "parentId": "hlma9lyi6l",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 18,
+  "rightColumn": 31,
   "shouldTruncate": false,
-  "text": "Warehouse Inventory Card\n",
+  "text": "{{currentItem.name}}",
   "textAlign": "LEFT",
-  "textColor": "#999999",
-  "topRow": 1,
+  "textColor": "#3f3f46",
+  "textStyle": "HEADING",
+  "topRow": 0,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "24ve29ka2t",
-  "widgetName": "Warehouse_Inventory_Text"
+  "widgetId": "1z6nj366is",
+  "widgetName": "Text1Copy2Copy"
 }

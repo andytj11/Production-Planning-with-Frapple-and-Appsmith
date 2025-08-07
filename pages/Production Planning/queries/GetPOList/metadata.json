@@ -1,6 +1,6 @@
 {
   "gitSyncId": "6886fa708a78c04a4132ad3c_8163e757-60ec-4af7-85c4-c4a71419533d",
-  "id": "Production Planning_GetPOList",
+  "id": "Production Planning_getPOList",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
@@ -23,7 +23,7 @@
       "pluginId": "postgres-plugin"
     },
     "dynamicBindingPathList": [],
-    "name": "GetPOList",
+    "name": "getPOList",
     "pageId": "Production Planning",
     "runBehaviour": "ON_PAGE_LOAD",
     "userSetOnLoad": false

@@ -3,7 +3,7 @@
   "allowScroll": false,
   "animateLoading": true,
   "borderRadius": "1.5rem",
-  "bottomRow": 71,
+  "bottomRow": 538,
   "boxShadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
   "chartData": {
     "10ar6d7um8": {
@@ -26,8 +26,8 @@
   },
   "chartName": "Sales Report",
   "chartType": "CUSTOM_ECHART",
-  "customEChartConfig": "{{ ((chartType) => ( \n({\n  title: {\n    text: 'Average utilisation Feb 19 - Jul 20',\n    left: 'center'\n  },\n  tooltip: {\n    trigger: 'item',\n    formatter: '{b}: {c}%'\n  },\n  xAxis: {\n    type: 'category',\n    data: (GetResourceUtil.data || []).map(r => r.resource),\n    axisLabel: { rotate: 30 }\n  },\n  yAxis: {\n    type: 'value',\n    max: 100,\n    name: '%'\n  },\n  series: [{\n    name: 'Utilisation',\n    type: 'bar',\n    data: (GetResourceUtil.data || []).map(r => r.util_pct),\n    itemStyle: { color: '#ff9999' },    //  ← salmon-pink bars\n    label: {\n      show: true,\n      position: 'top',\n      formatter: '{c}%'\n    }\n  }]\n})\n))(Resource_Utilization_Chart.chartType) }}",
-  "customFusionChartConfig": "{\n  \"type\": \"column2d\",\n  \"dataFormat\": \"json\",\n  \"width\": \"100%\",\n  \"height\": \"350\",\n  \"dataSource\": {\n    \"chart\": {\n      \"caption\": \"Average utilisation Feb-19 → Jul-20\",\n      \"yAxisName\": \"%\",\n      \"yAxisMaxValue\": \"100\",\n      \"decimals\": \"1\",\n      \"theme\": \"fusion\",\n      \"paletteColors\": \"#42a5f5\",\n      \"showValues\": \"1\"\n    },\n    \"data\": {{ \n      (GetResourceUtil.data || []).map(r => ({\n        label: r.resource,\n        value: r.util_pct\n      }))\n    }}\n  }\n}\n",
+  "customEChartConfig": "{{ ((chartType) => ( \n({\n  tooltip: {\n    trigger: 'item',\n    formatter: '{b}: {c}%'\n  },\n  xAxis: {\n    type: 'category',\n    data: (getResourceUtil.data || []).map(r => r.resource),\n    axisLabel: { rotate: 30 }\n  },\n  yAxis: {\n    type: 'value',\n    max: 100,\n    name: '%'\n  },\n  series: [{\n    name: 'Utilisation',\n    type: 'bar',\n    data: (getResourceUtil.data || []).map(r => r.util_pct),\n    itemStyle: { color: '#ff9999' },    //  ← salmon-pink bars\n    label: {\n      show: true,\n      position: 'top',\n      formatter: '{c}%'\n    }\n  }]\n})\n))(Resource_Utilization_Chart.chartType) }}",
+  "customFusionChartConfig": "{\n  \"type\": \"column2d\",\n  \"dataFormat\": \"json\",\n  \"width\": \"100%\",\n  \"height\": \"350\",\n  \"dataSource\": {\n    \"chart\": {\n      \"caption\": \"Average utilisation Feb-19 → Jul-20\",\n      \"yAxisName\": \"%\",\n      \"yAxisMaxValue\": \"100\",\n      \"decimals\": \"1\",\n      \"theme\": \"fusion\",\n      \"paletteColors\": \"#42a5f5\",\n      \"showValues\": \"1\"\n    },\n    \"data\": {{ \n      (getResourceUtil.data || []).map(r => ({\n        label: r.resource,\n        value: r.util_pct\n      }))\n    }}\n  }\n}\n",
   "dynamicBindingPathList": [
     {
       "key": "customEChartConfig"
@@ -49,15 +49,15 @@
   "isVisible": true,
   "key": "f0fxfr7a2y",
   "labelOrientation": "auto",
-  "leftColumn": 32,
+  "leftColumn": 27,
   "minWidth": 450,
   "mobileBottomRow": 68,
   "mobileLeftColumn": 31,
   "mobileRightColumn": 46,
   "mobileTopRow": 36,
   "needsErrorInfo": true,
-  "originalBottomRow": 71,
-  "originalTopRow": 26,
+  "originalBottomRow": 538,
+  "originalTopRow": 517,
   "parentColumnSpace": 17.9375,
   "parentId": "0",
   "parentRowSpace": 10,
@@ -65,10 +65,10 @@
   "responsiveBehavior": "fill",
   "rightColumn": 64,
   "showDataPointLabel": false,
-  "topRow": 26,
+  "topRow": 517,
   "type": "CHART_WIDGET",
   "version": 1,
-  "widgetId": "qaaffp50f6",
+  "widgetId": "kyb41yeu8l",
   "widgetName": "Resource_Utilization_Chart",
   "xAxisName": "Product Line",
   "yAxisName": "Revenue($)"

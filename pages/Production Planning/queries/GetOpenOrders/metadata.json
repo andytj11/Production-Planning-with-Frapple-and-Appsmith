@@ -1,6 +1,6 @@
 {
   "gitSyncId": "6886fa708a78c04a4132ad3c_23ddd98e-2939-44e0-8053-6fe28dc1a2a2",
-  "id": "Production Planning_GetOpenOrders",
+  "id": "Production Planning_getOpenOrders",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
@@ -23,7 +23,7 @@
       "pluginId": "postgres-plugin"
     },
     "dynamicBindingPathList": [],
-    "name": "GetOpenOrders",
+    "name": "getOpenOrders",
     "pageId": "Production Planning",
     "runBehaviour": "ON_PAGE_LOAD",
     "userSetOnLoad": false
