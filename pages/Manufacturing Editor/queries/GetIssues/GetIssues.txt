@@ -1,0 +1,3 @@
+SELECT id, description, resource_id, severity
+FROM   public.out_problem
+ORDER  BY severity DESC;

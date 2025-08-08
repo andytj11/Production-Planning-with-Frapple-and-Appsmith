@@ -1,0 +1,22 @@
+UPDATE public.operationplan
+SET
+    startdate = COALESCE(
+                  NULLIF('{{ PlanTable.updatedRow.startdate }}','')::timestamptz,
+                  startdate),
+
+    enddate   = COALESCE(
+                  NULLIF('{{ PlanTable.updatedRow.enddate }}','')::timestamptz,
+                  enddate),
+
+    /* quantity: only cast when not blank, match column type (integer) */
+    quantity  = CASE
+                  WHEN '{{ PlanTable.updatedRow.quantity }}' = ''
+                  THEN quantity                          -- leave old value
+                  ELSE '{{ PlanTable.updatedRow.quantity }}'::integer
+                END,
+
+    status    = COALESCE(
+                  NULLIF('{{ PlanTable.updatedRow.status }}','')::text,
+                  status)
+
+WHERE reference = '{{ PlanTable.updatedRow.order_ref }}';

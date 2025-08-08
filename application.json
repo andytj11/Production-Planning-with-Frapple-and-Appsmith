@@ -32,6 +32,10 @@
     {
       "id": "Production Planning",
       "isDefault": true
+    },
+    {
+      "id": "Manufacturing Editor",
+      "isDefault": false
     }
   ],
   "unpublishedAppLayout": {

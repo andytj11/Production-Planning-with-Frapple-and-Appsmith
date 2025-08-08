@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 483,
+  "bottomRow": 366,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -30,23 +30,23 @@
   "mobileRightColumn": 23,
   "mobileTopRow": 22,
   "needsErrorInfo": false,
-  "originalBottomRow": 483,
-  "originalTopRow": 479,
+  "originalBottomRow": 366,
+  "originalTopRow": 362,
   "overflow": "NONE",
   "parentColumnSpace": 15.171875,
   "parentId": "0",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 19,
+  "rightColumn": 16,
   "shouldTruncate": false,
-  "text": "Problem Details Report\n",
+  "text": "Planned Production Schedule ",
   "textAlign": "LEFT",
   "textColor": "#999999",
-  "topRow": 479,
+  "topRow": 362,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "imnycn82lu",
-  "widgetName": "Operation_Plans_TextCopyCopy"
+  "widgetId": "d7dlon2kjk",
+  "widgetName": "Planned_Production_Text"
 }

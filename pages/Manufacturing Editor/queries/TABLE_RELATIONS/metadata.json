@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6886fa708a78c04a4132ad3c_3d6479d0-da13-41b9-a079-e02914fe239b",
-  "id": "Production Planning_Query1",
+  "gitSyncId": "6886fa708a78c04a4132ad3c_a4c5ce80-0af6-4c34-aa48-ac36ba3d3e6a",
+  "id": "Manufacturing Editor_TABLE_RELATIONS",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "WITH RECURSIVE bom(level,parent,child,qty) AS ( SELECT 1, operation_id, item_id, 1 FROM public.operationmaterial WHERE item_id='chair' UNION ALL SELECT level+1, m.operation_id, m.item_id, qty FROM bom b JOIN public.operationmaterial m ON m.operation_id=b.parent ) SELECT * FROM bom;",
+      "body": "SELECT * FROM public.operationplan;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -23,8 +23,8 @@
       "pluginId": "postgres-plugin"
     },
     "dynamicBindingPathList": [],
-    "name": "Query1",
-    "pageId": "Production Planning",
+    "name": "TABLE_RELATIONS",
+    "pageId": "Manufacturing Editor",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }

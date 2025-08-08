@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n    d.name            AS order_name,\n    i.name            AS item,\n    l.name            AS location,\n    COALESCE(c.name, '-') AS customer,\n    d.status,                     -- will be 'closed'\n    d.quantity,\n    d.due\nFROM public.demand        d\nJOIN public.item          i ON i.name      = d.item_id\nJOIN public.location      l ON l.name      = d.location_id\nLEFT JOIN public.customer c ON c.name      = d.customer_id\nWHERE d.status = 'closed'                 -- <<< only closed orders\nORDER BY d.due;                           -- same sort as screenshot\n",
+      "body": "SELECT\n    d.name            AS order_name,\n    i.name            AS item,\n    l.name            AS location,\n    COALESCE(c.name, '-') AS customer,\n    d.status,                     -- will be 'closed'\n    d.quantity,\n    d.due\nFROM public.demand        d\nJOIN public.item          i ON i.name      = d.item_id\nJOIN public.location      l ON l.name      = d.location_id\nLEFT JOIN public.customer c ON c.name      = d.customer_id\nWHERE d.status = 'closed'                 -- <<< only closed orders\nORDER BY d.due;                           -- same sort as screenshot",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

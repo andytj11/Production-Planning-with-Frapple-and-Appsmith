@@ -1,8 +1,8 @@
 {
   "gitSyncId": "6886fa708a78c04a4132ad3c_94e44943-8317-438d-b1aa-3cba0d718d96",
-  "id": "Production Planning_ChartBuilder",
+  "id": "Production Planning_ForecastUtil",
   "unpublishedCollection": {
-    "name": "ChartBuilder",
+    "name": "ForecastUtil",
     "pageId": "Production Planning",
     "pluginId": "js-plugin",
     "pluginType": "JS",

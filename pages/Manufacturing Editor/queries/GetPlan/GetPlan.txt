@@ -1,0 +1,11 @@
+SELECT
+    reference            AS order_ref,     -- unique ID in this table
+    item_id,
+    location_id,
+    startdate,
+    enddate,
+    quantity,
+    status
+FROM   public.operationplan
+WHERE  startdate >= {{ StartDate.selectedDate }}
+  AND  enddate   <= {{ EndDate.selectedDate }};
