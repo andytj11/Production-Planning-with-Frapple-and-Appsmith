@@ -1,0 +1,6 @@
+BEGIN;
+UPDATE public.operationplan
+SET startdate = {{ this.params.startdate }},
+    enddate   = {{ this.params.enddate }}
+WHERE reference = {{ this.params.reference }};
+COMMIT;

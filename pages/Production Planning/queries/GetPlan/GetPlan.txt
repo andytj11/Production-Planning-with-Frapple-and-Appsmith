@@ -1,0 +1,15 @@
+SELECT
+  op.reference,                 -- primary key
+  op.item_id,
+  op.location_id,
+  opr.resource_id,              -- lane; can be null
+  op.startdate,
+  op.enddate,
+  op.quantity,
+  op.status
+FROM public.operationplan op
+LEFT JOIN public.operationplanresource opr
+  ON opr.operationplan_id = op.reference
+WHERE op.startdate >= '2019-06-26'
+  AND op.enddate   <= '2019-07-07'
+ORDER BY op.startdate;

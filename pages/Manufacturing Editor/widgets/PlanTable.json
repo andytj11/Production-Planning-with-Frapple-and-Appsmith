@@ -1,10 +1,11 @@
 {
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "allowAddNewRow": true,
   "animateLoading": true,
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 54,
+  "bottomRow": 67,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "cachedTableData": {},
   "canFreezeColumn": true,
@@ -32,22 +33,24 @@
     }
   },
   "columnOrder": [
-    "order_ref",
     "item_id",
     "location_id",
     "startdate",
     "enddate",
     "quantity",
     "status",
+    "order_ref",
     "EditActions1"
   ],
-  "columnUpdatedAt": 1754554555123,
+  "columnUpdatedAt": 1754893663509,
   "columnWidthMap": {
     "enddate": 198,
+    "location_id": 117,
     "order_ref": 114,
     "quantity": 112,
+    "reference": 107,
     "startdate": 204,
-    "status": 107
+    "status": 121
   },
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -71,9 +74,6 @@
       "key": "tableData"
     },
     {
-      "key": "primaryColumns.order_ref.computedValue"
-    },
-    {
       "key": "primaryColumns.item_id.computedValue"
     },
     {
@@ -90,6 +90,9 @@
     },
     {
       "key": "primaryColumns.status.computedValue"
+    },
+    {
+      "key": "primaryColumns.order_ref.computedValue"
     },
     {
       "key": "primaryColumns.EditActions1.saveButtonColor"
@@ -147,8 +150,8 @@
   "mobileRightColumn": 13,
   "mobileTopRow": 11,
   "needsErrorInfo": false,
-  "originalBottomRow": 56,
-  "originalTopRow": 12,
+  "originalBottomRow": 67,
+  "originalTopRow": 23,
   "parentColumnSpace": 17.9375,
   "parentId": "0",
   "parentRowSpace": 10,
@@ -184,7 +187,7 @@
       "isVisible": true,
       "label": "Save / Discard",
       "notation": "standard",
-      "onSave": "{{\nUpdatePlan.run(\n  () => {                       // on success\n      GetPlan.run();            // refresh table (clears edit mode)\n      showAlert('Changes saved', 'success');\n  },\n  e => showAlert(e.message,'error')   // on error\n);\n}}\n",
+      "onSave": "{{\nUpdatePlan.run(\n  () => {                 // on success\n      GetPlan.run();      // refresh table – clears edit mode in v1\n      showAlert('Changes saved','success');\n  },\n  e => showAlert(e.message,'error')  // on error\n);\n}}\n",
       "originalId": "EditActions1",
       "saveActionLabel": "Save",
       "saveBorderRadius": "{{PlanTable.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",
@@ -292,12 +295,14 @@
       "alias": "order_ref",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = PlanTable.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"order_ref\"])) : order_ref })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
       "enableSort": true,
+      "fontStyle": "",
       "horizontalAlignment": "LEFT",
       "id": "order_ref",
       "index": 0,
@@ -313,6 +318,7 @@
       "notation": "standard",
       "originalId": "order_ref",
       "sticky": "",
+      "textColor": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,
       "validation": {},
@@ -385,30 +391,36 @@
       "alias": "status",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "columnType": "text",
+      "columnType": "select",
       "computedValue": "{{(() => { const tableData = PlanTable.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"status\"])) : status })()}}",
       "currencyCode": "USD",
+      "customAlias": "",
       "decimals": 0,
       "enableFilter": true,
       "enableSort": true,
       "horizontalAlignment": "LEFT",
       "id": "status",
       "index": 6,
-      "isCellEditable": false,
+      "isCellEditable": true,
       "isCellVisible": true,
       "isDerived": false,
       "isDisabled": false,
       "isDiscardVisible": true,
-      "isEditable": false,
+      "isEditable": true,
       "isSaveVisible": true,
       "isVisible": true,
       "label": "status",
+      "menuItemsSource": "STATIC",
       "notation": "standard",
       "originalId": "status",
+      "selectOptions": "[{\"label\": \"proposed\", \"value\": \"proposed\"}, {\"label\": \"confirmed\", \"value\": \"confirmed\"}]",
       "sticky": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,
-      "validation": {},
+      "validation": {
+        "isColumnEditableCellRequired": false,
+        "isColumnEditableCellValid": ""
+      },
       "verticalAlignment": "CENTER",
       "width": 150
     }
@@ -420,7 +432,7 @@
   "showInlineEditingOptionDropdown": true,
   "tableData": "{{GetPlan.data}}",
   "textSize": "0.875rem",
-  "topRow": 10,
+  "topRow": 23,
   "totalRecordsCount": 0,
   "type": "TABLE_WIDGET_V2",
   "version": 2,

@@ -1,0 +1,124 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "allowScroll": false,
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 400,
+  "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+  "chartData": {
+    "ydheqbdn9z": {
+      "data": [
+        {
+          "x": "Product1",
+          "y": 20000
+        },
+        {
+          "x": "Product2",
+          "y": 22000
+        },
+        {
+          "x": "Product3",
+          "y": 32000
+        }
+      ],
+      "seriesName": "2023"
+    }
+  },
+  "chartName": "Sales Report",
+  "chartType": "CUSTOM_ECHART",
+  "customEChartConfig": "{{ ((chartType) => ( \n(() => {\n  // ---- source rows (your GetPlan) ----\n  const rows = GetPlan.data || [];\n\n  // guard\n  if (!rows.length) {\n    return {\n      title: { text: 'Weekly production (no rows)', left: 'center', textStyle:{color:'#999'} },\n      series: []\n    };\n  }\n\n  // time helpers\n  const t = s => new Date(s).getTime();\n\n  // x-axis window using fixed dates\n  const min = new Date(\"2019-06-26\").getTime();\n  const max = new Date(\"2019-07-07\").getTime();\n\n  // y-axis categories (here by item; change to resource_id if you have it)\n  const cats = [...new Set(rows.map(r => r.item_id || ''))];\n\n  // color by status\n  const colorOf = s =>\n    s === 'confirmed' ? '#22c55e' :     // green\n    s === 'planned'   ? '#3b82f6' :     // blue\n                        '#f59e0b';      // amber (proposed/other)\n\n  // each datum => [catIndex, start, end, order_ref, qty, status]\n  const data = rows.map(r => ({\n    name: r.item_id,\n    value: [\n      cats.indexOf(r.item_id),\n      t(r.startdate),\n      t(r.enddate),\n      r.order_ref,\n      Number(r.quantity || 0),\n      r.status || ''\n    ],\n    itemStyle: { color: colorOf(r.status) }\n  }));\n\n  return {\n    title: { text: 'Weekly production schedule', left: 'center', textStyle:{ color:'#999', fontSize:16, fontWeight:600 }},\n    grid:  { left: 120, right: 24, top: 36, bottom: 56 },\n    tooltip: {\n      borderColor: '#ddd',\n      formatter: (p) => {\n        const v = p.data.value;\n        const s = echarts.format.formatTime('MM-dd HH:mm', v[1]);\n        const e = echarts.format.formatTime('MM-dd HH:mm', v[2]);\n        return `\n          <b>${p.data.name}</b><br/>\n          Order: ${v[3]}<br/>\n          ${s} → ${e}<br/>\n          Qty: ${v[4]} • Status: ${v[5]}\n        `;\n      }\n    },\n    xAxis: {\n      type: 'time',\n      min, max,\n      axisLabel: { formatter: val => echarts.format.formatTime('MM-dd', val) },\n      splitLine: { show: true }\n    },\n    yAxis: {\n      type: 'category',\n      data: cats,\n      axisLabel: { color:'#666' },\n      splitLine: { show: false }\n    },\n    dataZoom: [\n      { type:'inside', xAxisIndex:0 },\n      { type:'slider', xAxisIndex:0, height: 16, bottom: 20 }\n    ],\n    series: [{\n      type: 'custom',\n      name: 'orders',\n      renderItem: function(params, api) {\n        const catIndex = api.value(0);\n        const start = api.coord([ api.value(1), catIndex ]);\n        const end   = api.coord([ api.value(2), catIndex ]);\n        const barH  = api.size([0, 1])[1] * 0.6;\n        const y     = start[1] - barH / 2;\n\n        const rect = echarts.graphic.clipRectByRect(\n          { x: start[0], y, width: Math.max(2, end[0] - start[0]), height: barH },\n          { x: params.coordSys.x, y: params.coordSys.y, width: params.coordSys.width, height: params.coordSys.height }\n        );\n        if (!rect) return null;\n        return {\n          type: 'rect',\n          shape: rect,\n          style: api.style({ opacity: 0.9 }),\n          emphasis: { style: { opacity: 1 } }\n        };\n      },\n      encode: { x: [1,2], y: 0 },\n      data\n    }]\n  };\n})()\n))(Production_Schedule_Gantt.chartType) }}",
+  "customFusionChartConfig": {
+    "dataSource": {
+      "chart": {
+        "alignCaptionWithCanvas": 1,
+        "canvasPadding": "0",
+        "caption": "Sales Report",
+        "captionAlignment": "center",
+        "captionFontColor": "#231F20",
+        "captionFontSize": "24",
+        "captionPadding": "20",
+        "chartBottomMargin": "10",
+        "chartLeftMargin": "20",
+        "chartRightMargin": "40",
+        "chartTopMargin": "10",
+        "labelFontColor": "#716e6e",
+        "labelFontSize": "12",
+        "legendIconAlpha": "100",
+        "legendIconBgAlpha": "100",
+        "legendIconSides": "4",
+        "legendPosition": "top",
+        "theme": "fusion",
+        "xAxisName": "Product Line",
+        "xAxisNameFontColor": "#716e6e",
+        "xAxisNameFontSize": "14",
+        "yAxisName": "Revenue($)",
+        "yAxisNameFontColor": "#716e6e",
+        "yAxisNameFontSize": "14",
+        "yAxisValueFontColor": "#716e6e",
+        "yAxisValueFontSize": "12"
+      },
+      "data": [
+        {
+          "label": "Product1",
+          "value": 20000
+        },
+        {
+          "label": "Product2",
+          "value": 22000
+        },
+        {
+          "label": "Product3",
+          "value": 32000
+        }
+      ]
+    },
+    "type": "column2d"
+  },
+  "dynamicBindingPathList": [
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "boxShadow"
+    },
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "fontFamily"
+    },
+    {
+      "key": "customEChartConfig"
+    }
+  ],
+  "dynamicTriggerPathList": [],
+  "flexVerticalAlignment": "start",
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "isLoading": false,
+  "isVisible": true,
+  "key": "7tryzb3k44",
+  "labelOrientation": "auto",
+  "leftColumn": 0,
+  "minWidth": 450,
+  "mobileBottomRow": 205,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 12,
+  "mobileTopRow": 173,
+  "needsErrorInfo": true,
+  "originalBottomRow": 400,
+  "originalTopRow": 360,
+  "parentColumnSpace": 17.9375,
+  "parentId": "0",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 64,
+  "showDataPointLabel": false,
+  "topRow": 360,
+  "type": "CHART_WIDGET",
+  "version": 1,
+  "widgetId": "nfrf71kvi0",
+  "widgetName": "Production_Schedule_Gantt",
+  "xAxisName": "Product Line",
+  "yAxisName": "Revenue($)"
+}

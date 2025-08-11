@@ -1,16 +1,16 @@
 {
-  "gitSyncId": "6886fa708a78c04a4132ad3c_a4c5ce80-0af6-4c34-aa48-ac36ba3d3e6a",
-  "id": "Manufacturing Editor_TABLE_RELATIONS",
+  "gitSyncId": "6886fa708a78c04a4132ad3c_f0620796-10c2-476e-8446-c46dc4d55b56",
+  "id": "Manufacturing Editor_UpdatePlanParam",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT * FROM public.operationplan;",
+      "body": "BEGIN;\nUPDATE public.operationplan\nSET startdate = {{ this.params.startdate }},\n    enddate   = {{ this.params.enddate }}\nWHERE reference = {{ this.params.reference }};\nCOMMIT;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
-          "value": false
+          "value": true
         }
       ],
       "timeoutInMillisecond": 10000
@@ -22,8 +22,12 @@
       "name": "FrePPle Config",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
-    "name": "TABLE_RELATIONS",
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
+    "name": "UpdatePlanParam",
     "pageId": "Manufacturing Editor",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false

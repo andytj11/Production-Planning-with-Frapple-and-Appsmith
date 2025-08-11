@@ -1,0 +1,12 @@
+-- timestamptz version
+UPDATE public.operationplan op
+SET
+  startdate = COALESCE(NULLIF('{{ this.params.startdate }}','')::timestamptz, op.startdate),
+  enddate   = COALESCE(NULLIF('{{ this.params.enddate }}','')::timestamptz,   op.enddate),
+  status    = COALESCE(NULLIF('{{ this.params.status }}','')::text,           op.status)
+WHERE op.reference   = '{{ this.params.order_ref }}'
+  AND op.item_id     = '{{ this.params.item_id }}'
+  AND op.location_id = '{{ this.params.location_id }}'
+  AND op.startdate   = NULLIF('{{ this.params.orig_startdate }}','')::timestamptz
+  AND op.enddate     = NULLIF('{{ this.params.orig_enddate }}','')::timestamptz
+RETURNING reference, item_id, location_id, startdate, enddate, status;

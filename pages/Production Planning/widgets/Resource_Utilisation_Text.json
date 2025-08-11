@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 517,
+  "bottomRow": 556,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -30,20 +30,20 @@
   "mobileRightColumn": 23,
   "mobileTopRow": 22,
   "needsErrorInfo": false,
-  "originalBottomRow": 517,
-  "originalTopRow": 513,
+  "originalBottomRow": 556,
+  "originalTopRow": 552,
   "overflow": "NONE",
   "parentColumnSpace": 15.171875,
   "parentId": "0",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 19,
+  "rightColumn": 38,
   "shouldTruncate": false,
   "text": "Resource Utilisation Report\n",
   "textAlign": "LEFT",
   "textColor": "#999999",
-  "topRow": 513,
+  "topRow": 552,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

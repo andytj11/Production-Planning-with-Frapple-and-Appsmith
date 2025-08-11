@@ -1,0 +1,56 @@
+{
+  "animateLoading": true,
+  "borderRadius": "0.375rem",
+  "bottomRow": 181,
+  "bottomRowBeforeCollapse": 181,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": false,
+  "key": "58uzop9srs",
+  "leftColumn": 0,
+  "minWidth": 120,
+  "mobileBottomRow": 160,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 12,
+  "mobileTopRow": 156,
+  "needsErrorInfo": false,
+  "onClick": "{{\nReplanAPI.run(\n  {\n    body: {\n      plan:   GetPlan.data,   // current visible plan\n      issues: GetIssues.data  // current open problems\n    }\n  },\n  () => {                     // success: refresh plan + calendar\n    GetPlan.run().then(() => {\n      // re-run the calendar builder if needed\n      // (the HTML/JS snippet above already rerenders on each drag;\n      //  here we just ensure the table + calendar stay in sync)\n      showAlert('Plan recalculated', 'success');\n    });\n  },\n  (e) => showAlert(e.message, 'error')\n)\n}}\n",
+  "originalBottomRow": 181,
+  "originalTopRow": 175,
+  "parentColumnSpace": 17.9375,
+  "parentId": "0",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 12,
+  "text": "Submit",
+  "topRow": 175,
+  "topRowBeforeCollapse": 175,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "rfw7x38ob0",
+  "widgetName": "Button1"
+}

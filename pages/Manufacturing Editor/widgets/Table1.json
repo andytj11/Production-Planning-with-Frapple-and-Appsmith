@@ -1,11 +1,12 @@
 {
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "allowAddNewRow": false,
   "animateLoading": true,
   "borderColor": "#E0DEDE",
-  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "borderRadius": "1.5rem",
   "borderWidth": "1",
-  "bottomRow": 67,
-  "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+  "bottomRow": 17,
+  "boxShadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
   "cachedTableData": {},
   "canFreezeColumn": true,
   "childStylesheet": {
@@ -52,12 +53,6 @@
       "key": "accentColor"
     },
     {
-      "key": "borderRadius"
-    },
-    {
-      "key": "boxShadow"
-    },
-    {
       "key": "primaryColumns.affectedRows.computedValue"
     }
   ],
@@ -78,10 +73,10 @@
   "isVisibleDownload": true,
   "isVisibleFilters": false,
   "isVisiblePagination": true,
-  "isVisibleSearch": true,
+  "isVisibleSearch": false,
   "key": "y1ae0m8dnd",
   "label": "Data",
-  "leftColumn": 0,
+  "leftColumn": 28,
   "minWidth": 450,
   "mobileBottomRow": 156,
   "mobileLeftColumn": 0,
@@ -130,15 +125,15 @@
   },
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 64,
+  "rightColumn": 44,
   "searchKey": "",
   "tableData": "{{UpdatePlan.data}}",
   "textSize": "0.875rem",
-  "topRow": 55,
+  "topRow": 2,
   "totalRecordsCount": 0,
   "type": "TABLE_WIDGET_V2",
   "version": 2,
   "verticalAlignment": "CENTER",
-  "widgetId": "6t6mkvkljj",
+  "widgetId": "zgucltmzhm",
   "widgetName": "Table1"
 }

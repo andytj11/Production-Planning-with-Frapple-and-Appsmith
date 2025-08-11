@@ -1,0 +1,13 @@
+-- If your columns are timestamptz (your logs show ...Z, so likely tz)
+SELECT
+  reference  AS order_ref,
+  item_id,
+  location_id,
+  startdate,
+  enddate,
+  quantity,
+  status
+FROM public.operationplan
+WHERE startdate <= COALESCE(NULLIF('{{ EndDate.selectedDate }}','')::timestamptz,   'infinity'::timestamptz)
+  AND enddate   >= COALESCE(NULLIF('{{ StartDate.selectedDate }}','')::timestamptz, '-infinity'::timestamptz)
+ORDER BY startdate, reference;
