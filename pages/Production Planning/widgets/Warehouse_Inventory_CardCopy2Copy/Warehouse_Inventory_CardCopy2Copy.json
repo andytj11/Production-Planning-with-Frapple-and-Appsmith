@@ -4,7 +4,7 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "1.5rem",
   "borderWidth": "",
-  "bottomRow": 59,
+  "bottomRow": 58,
   "boxShadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
   "children": [
     {
@@ -76,7 +76,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 31,
   "shouldScrollContents": true,
-  "topRow": 25,
+  "topRow": 24,
   "type": "STATBOX_WIDGET",
   "widgetId": "lexh1c2hlk",
   "widgetName": "Warehouse_Inventory_CardCopy2Copy"

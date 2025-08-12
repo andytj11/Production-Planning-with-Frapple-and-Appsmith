@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 224,
+  "bottomRow": 223,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -43,7 +43,7 @@
   "text": "Closed Orders",
   "textAlign": "LEFT",
   "textColor": "#999999",
-  "topRow": 220,
+  "topRow": 219,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

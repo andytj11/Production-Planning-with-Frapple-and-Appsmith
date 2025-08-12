@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 556,
+  "bottomRow": 555,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -43,7 +43,7 @@
   "text": "Resource Utilisation Report\n",
   "textAlign": "LEFT",
   "textColor": "#999999",
-  "topRow": 552,
+  "topRow": 551,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

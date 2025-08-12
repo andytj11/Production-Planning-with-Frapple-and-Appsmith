@@ -4,7 +4,7 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "1.5rem",
   "borderWidth": "2\n",
-  "bottomRow": 24,
+  "bottomRow": 23,
   "boxShadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
   "children": [
     {
@@ -76,7 +76,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 12,
   "shouldScrollContents": true,
-  "topRow": 7,
+  "topRow": 6,
   "type": "STATBOX_WIDGET",
   "widgetId": "x8julttl1n",
   "widgetName": "Late_Orders_KPI"

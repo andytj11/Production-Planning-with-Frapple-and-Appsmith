@@ -38,7 +38,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 60,
   "shouldTruncate": false,
-  "text": "For table, modify and click save.\nFor gantt chart, drag or resize and drop.",
+  "text": "For table, modify and click save.\nFor gantt chart, drag or resize and drop, auto saved.",
   "textAlign": "CENTER",
   "textColor": "#7e22ce",
   "topRow": 6,

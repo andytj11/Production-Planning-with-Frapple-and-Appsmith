@@ -3,7 +3,7 @@
   "allowScroll": false,
   "animateLoading": true,
   "borderRadius": "1.5rem",
-  "bottomRow": 577,
+  "bottomRow": 576,
   "boxShadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
   "chartData": {
     "10ar6d7um8": {
@@ -65,7 +65,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 64,
   "showDataPointLabel": false,
-  "topRow": 556,
+  "topRow": 555,
   "type": "CHART_WIDGET",
   "version": 1,
   "widgetId": "kyb41yeu8l",

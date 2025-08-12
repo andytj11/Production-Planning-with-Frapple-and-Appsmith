@@ -4,7 +4,7 @@
   "borderColor": "#ef4444",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "0",
-  "bottomRow": 85,
+  "bottomRow": 84,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -46,7 +46,7 @@
   "text": "Proposed Production Orders",
   "textAlign": "LEFT",
   "textColor": "#999999",
-  "topRow": 81,
+  "topRow": 80,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

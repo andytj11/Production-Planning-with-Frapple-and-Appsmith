@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 407,
+  "bottomRow": 406,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -43,7 +43,7 @@
   "text": "Planned Production Schedule ",
   "textAlign": "LEFT",
   "textColor": "#999999",
-  "topRow": 403,
+  "topRow": 402,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
