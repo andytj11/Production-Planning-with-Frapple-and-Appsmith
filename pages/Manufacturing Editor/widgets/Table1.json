@@ -129,7 +129,7 @@
   "searchKey": "",
   "tableData": "{{UpdatePlan.data}}",
   "textSize": "0.875rem",
-  "topRow": 2,
+  "topRow": 5,
   "totalRecordsCount": 0,
   "type": "TABLE_WIDGET_V2",
   "version": 2,
