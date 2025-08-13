@@ -33,7 +33,7 @@
   "parentId": "voi4qjrbf4",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 64,
+  "rightColumn": 62,
   "shouldTruncate": false,
   "text": "Inventory from completed orders or delivered before today.",
   "textAlign": "LEFT",

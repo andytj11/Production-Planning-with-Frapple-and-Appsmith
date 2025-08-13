@@ -55,13 +55,18 @@
   "dragDisabled": true,
   "dynamicBindingPathList": [],
   "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "isVisible"
+    }
+  ],
   "dynamicTriggerPathList": [],
   "flexVerticalAlignment": "stretch",
   "isCanvas": true,
   "isDeletable": false,
   "isListItemContainer": true,
   "isLoading": false,
-  "isVisible": true,
+  "isVisible": "true",
   "key": "8jnuluvg7f",
   "leftColumn": 0,
   "maxDynamicHeight": 9000,

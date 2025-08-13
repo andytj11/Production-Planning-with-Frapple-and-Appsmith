@@ -25,7 +25,7 @@
     "dynamicBindingPathList": [],
     "name": "getLateOrders",
     "pageId": "Production Planning",
-    "runBehaviour": "ON_PAGE_LOAD",
+    "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": false
   }
 }

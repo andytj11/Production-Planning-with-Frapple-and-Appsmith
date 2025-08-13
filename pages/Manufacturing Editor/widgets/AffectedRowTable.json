@@ -94,7 +94,7 @@
       "allowSameOptionsInNewRow": true,
       "cellBackground": "",
       "columnType": "number",
-      "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"affectedRows\"])) : affectedRows })()}}",
+      "computedValue": "{{(() => { const tableData = AffectedRowTable.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"affectedRows\"])) : affectedRows })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -135,5 +135,5 @@
   "version": 2,
   "verticalAlignment": "CENTER",
   "widgetId": "zgucltmzhm",
-  "widgetName": "Table1"
+  "widgetName": "AffectedRowTable"
 }

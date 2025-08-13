@@ -1,3 +1,0 @@
-SELECT id, entity, owner, name, description, startdate, enddate, weight
-FROM public.out_problem
-ORDER BY startdate DESC;

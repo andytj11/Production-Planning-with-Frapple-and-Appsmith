@@ -1,22 +1,22 @@
 UPDATE public.operationplan
 SET
     startdate = COALESCE(
-                  NULLIF('{{ PlanTable.updatedRow.startdate }}','')::timestamptz,
+                  NULLIF('{{ Plan_Table.updatedRow.startdate }}','')::timestamptz,
                   startdate),
 
     enddate   = COALESCE(
-                  NULLIF('{{ PlanTable.updatedRow.enddate }}','')::timestamptz,
+                  NULLIF('{{ Plan_Table.updatedRow.enddate }}','')::timestamptz,
                   enddate),
 
     /* quantity: only cast when not blank, match column type (integer) */
     quantity  = CASE
-                  WHEN '{{ PlanTable.updatedRow.quantity }}' = ''
+                  WHEN '{{ Plan_Table.updatedRow.quantity }}' = ''
                   THEN quantity                          -- leave old value
-                  ELSE '{{ PlanTable.updatedRow.quantity }}'::integer
+                  ELSE '{{ Plan_Table.updatedRow.quantity }}'::integer
                 END,
 
     status    = COALESCE(
-                  NULLIF('{{ PlanTable.updatedRow.status }}','')::text,
+                  NULLIF('{{ Plan_Table.updatedRow.status }}','')::text,
                   status)
 
-WHERE reference = '{{ PlanTable.updatedRow.order_ref }}';
+WHERE reference = '{{ Plan_Table.updatedRow.order_ref }}';
